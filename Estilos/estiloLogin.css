@@ -1,0 +1,70 @@
+@charset "UTF-8";
+
+/*criação de fonte por arquivo*/
+@font-face {
+    font-family: 'RobotoMd';
+    src: url(/Fonts/Roboto-Medium.ttf);
+}
+
+/*configs gerais*/
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+
+    font-family:'RobotoMd' ;
+    font-weight: 500;
+}
+
+/*variaveis*/
+:root{
+    --background: #F3F4F6;
+    --bluePrin: #3B82F6;
+}
+
+/*area body*/
+body{
+    height: 100vh;
+}
+
+/*Area container login*/
+#container_login{
+    background-color: var(--background);
+
+    border-radius: 39px;
+
+    height: 85%;
+
+    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.477);
+}
+
+p{
+    font-size: 1.4rem;
+    text-align: start;
+}
+
+label{
+    font-size: 1.2rem;
+}
+
+input{
+    width:75%;
+
+    border-radius: 10px;
+    border: none;
+
+    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.477);
+}
+
+button{
+    background-color: var(--bluePrin);
+    color: white;
+
+    border: none;
+
+    width: 60%;
+
+    border-radius: 10px;
+
+    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.477);
+}
