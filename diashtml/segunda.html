@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planivo</title>
+
+    <!--Favicon-->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <!--BOOTSTRAP-->
+    <link rel="stylesheet" href="/bootstrap-4.6.2-dist/css/bootstrap.min.css">
+
+    <!--CSS-->
+    <link rel="stylesheet" href="/Estilos/estiloPlanivo.css">
+</head>
+<body id="bodySeg">
+    <!--Inicio area header-->
+    <header class="d-flex flex-column align-items-center">
+
+        <!--img logo-->
+        <img class="mt-2" src="/img/LogoPlanivo.png" alt="logo" width="125px">
+
+        <!--conteiner para o nome do usuario-->
+        <div id="containerNome" class="d-flex align-items-center">
+            <p id="pUser">Olá, <span id="nomeHeader">Eliseu</span></p>
+            <img class="ml-1 mb-3" src="/img/renomear.png" alt="renomear-icon" width="30px" height="29px">
+        </div>
+
+    </header>
+    <!--fim area header-->
+
+    <!--area de navegacao dos dias da semana-->
+    <nav id="segDia" class="mt-3 d-flex align-items-center p-3" >
+
+        <!--ul para navegar nos dias da semana-->
+        <ul class="d-flex justify-content-around w-100 m-0">
+
+            <li id="domingo"><a href="domingo.html">DOM</a></li>
+            <li id="segunda"><a href="segunda.html">SEG</a></li>
+            <li id="terca"><a href="terca.html">TER</a></li>
+            <li id="quarta"><a href="quarta.html">QUA</a></li>
+            <li id="quinta"><a href="quinta.html">QUI</a></li>
+            <li id="sexta"><a href="sexta.html">SEX</a></li>
+            <li id="sabado"><a href="sabado.html">SAB</a></li>
+
+        </ul>
+
+    </nav>
+
+    <!--inicio area cronograma-->
+    <main>
+
+        <div id="contSemTask">
+            <h1>Vamos adicionar uma tarefa para planejar <br> o seu dia?</h1>
+            <!--button para começar a adicionar tarefa-->
+            <button id="comPlan" onclick="adicionarTarefa()">Começar a planejar!</button>
+        </div>
+
+    </main>
+    <!--fim area cronograma-->
+
+</body>
+</html>

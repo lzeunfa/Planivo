@@ -6,5 +6,6 @@ function prosseguirLogin(){
         alert('Preencha corretamente o campo nome para prosseguir!');
     }else{
         console.log(nomeUser);
+        window.location.href = "diashtml/segunda.html";
     }
 }
