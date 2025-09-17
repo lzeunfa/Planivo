@@ -39,12 +39,12 @@ body{
 }
 
 p{
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     text-align: start;
 }
 
 label{
-    font-size: 1.2rem;
+    font-size: 1.4rem;
 }
 
 input{
@@ -62,7 +62,7 @@ button{
 
     border: none;
 
-    width: 60%;
+    width: 65%;
 
     border-radius: 10px;
 
