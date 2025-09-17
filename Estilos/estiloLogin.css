@@ -24,7 +24,7 @@
 
 /*area body*/
 body{
-    background-color: red;
+    background-color: red !important;
     height: 100dvh;
 }
 
