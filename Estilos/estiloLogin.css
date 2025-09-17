@@ -25,6 +25,8 @@
 /*area body*/
 body{
     height: 100dvh;
+
+    background-color: white!important;
 }
 
 /*Area container login*/
