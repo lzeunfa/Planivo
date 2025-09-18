@@ -26,7 +26,19 @@ Propor ao usuário uma aplicação web simples e funcional para <br> organizar s
 Container contendo: <br>
 texto sobre o planivo<br>
 area para colocar nome do usuário<br>
-botão para prosseguir 
+botão para prosseguir
+
+* Tela principal vazia:<br>
+-Cabeçalho na cor roxa com radius<br>
+nas duas bordas inferiores contendo<br>
+comprimento ao usuário e opção de renomear<br>
+-Abaixo terá uma area para navegação<br>
+onde terá os dias da semana a serem <br>
+selecionados iniciando na segunda<br>
+-Abaixo mensagem pedindo para adiconar tarefa<br>
+-btn para adicionar a tarefa<br>
+-rodapé
+
 
 
 
