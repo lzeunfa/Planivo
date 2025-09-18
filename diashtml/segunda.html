@@ -6,25 +6,25 @@
     <title>Planivo</title>
 
     <!--Favicon-->
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
 
     <!--BOOTSTRAP-->
-    <link rel="stylesheet" href="/bootstrap-4.6.2-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../bootstrap-4.6.2-dist/css/bootstrap.min.css">
 
     <!--CSS-->
-    <link rel="stylesheet" href="/Estilos/estiloPlanivo.css">
+    <link rel="stylesheet" href="../Estilos/estiloPlanivo.css">
 </head>
 <body id="bodySeg">
     <!--Inicio area header-->
     <header class="d-flex flex-column align-items-center">
 
         <!--img logo-->
-        <img class="mt-2" src="/img/LogoPlanivo.png" alt="logo" width="125px">
+        <img class="mt-2" src="../img/LogoPlanivo.png" alt="logo" width="125px">
 
         <!--conteiner para o nome do usuario-->
         <div id="containerNome" class="d-flex align-items-center">
             <p id="pUser">Olá, <span id="nomeHeader">Eliseu</span></p>
-            <img class="ml-1 mb-3" src="/img/renomear.png" alt="renomear-icon" width="30px" height="29px">
+            <img class="ml-1 mb-3" src="../img/renomear.png" alt="renomear-icon" width="24px" height="23px">
         </div>
 
     </header>
@@ -51,15 +51,23 @@
     <!--inicio area cronograma-->
     <main>
 
-        <div id="contSemTask">
+        <div id="contSemTask" class="d-flex flex-column">
             <h1>Vamos adicionar uma tarefa para planejar <br> o seu dia?</h1>
-            
+
             <!--button para começar a adicionar tarefa-->
-            <button id="comPlan" onclick="adicionarTarefa()">Começar a planejar!</button>
+            <button id="comPlan" class="p-2 align-self-center mt-4" onclick="adicionarTarefa()">Começar a planejar!</button>
         </div>
 
     </main>
     <!--fim area cronograma-->
+
+    <!--inicio area footer-->
+    <footer>
+
+        <p class="text-center m-0 text-white">Desenvolivdo por Eliseu Nóbrega</p>
+
+    </footer>
+    <!--fim area footer-->
 
 </body>
 </html>
