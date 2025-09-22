@@ -98,6 +98,12 @@ body{
     background-color: var(--bluePrin);
     color: white;
 }
+
+#btnConfirmarNome{
+    width: 50%;
+
+    padding: 4px;
+}
 /*inicio area para adicionar tarefa*/
 
 /*area header*/
