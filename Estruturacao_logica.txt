@@ -1,0 +1,17 @@
+como funcionara adicionar uma nova tarefa:
+criar uma class Tarefa:
+constructor com horário inicial, nome da tarefa, horário final
+
+class bd como se fosse o banco de dados com função de cadastrar/gravar
+nele terá as operações com local storage
+
+function cadastrar tarefa:
+recebendo os valores dos inputs respectivos dos valores do constructor
+criar nova tarefa let tarefa = new Tarefa(classe)
+se a validação de dados da tarefa for verdadeira
+deve-se gravar a tarefa
+esvaziar os input
+senão
+exibir aviso de falta de dados para cadastrar tarefa
+
+validação de dados da tarefa
