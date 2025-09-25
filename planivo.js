@@ -4,6 +4,14 @@ areaAddTask.style.display = "none";
 let areaRenomear = document.getElementById("areaRenomear");
 areaRenomear.style.display = 'none';
 
+class nomeUser{
+    constructor(nomeU){
+        this.nomeU = nomeU;
+    }
+
+    
+}
+
 //classe das tarefas
 class Tarefa{
 
@@ -25,6 +33,8 @@ class Tarefa{
         return true;
     }
 }
+
+
 
 
 //função do botao de prosseguir da area login
