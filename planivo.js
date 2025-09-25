@@ -4,6 +4,28 @@ areaAddTask.style.display = "none";
 let areaRenomear = document.getElementById("areaRenomear");
 areaRenomear.style.display = 'none';
 
+//classe das tarefas
+class Tarefa{
+
+    constructor(horarioI,horarioF,diaSem){
+        this.horarioI = horarioI;
+        this.horarioF = horarioF;
+        this.diaSem = diaSem;
+    }
+
+    //método para validação dos dados
+    //verifica se os inputs obrigatorios estão preenchidos
+    validarDados(){
+
+        for(let i in this){
+            if(this[i] == undefined || this[i] == '' || this[i] == null){
+                return false;
+            }
+        }
+        return true;
+    }
+}
+
 
 //função do botao de prosseguir da area login
 function prosseguirLogin(){
