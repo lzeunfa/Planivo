@@ -13,6 +13,6 @@ se a validação de dados da tarefa for verdadeira
 deve-se gravar a tarefa
 esvaziar os input
 senão
-exibir aviso de falta de dados para cadastrar tarefa
+exibir aviso de falta de dad+os para cadastrar tarefa
 
 validação de dados da tarefa
