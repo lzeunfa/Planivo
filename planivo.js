@@ -4,14 +4,6 @@ areaAddTask.style.display = "none";
 let areaRenomear = document.getElementById("areaRenomear");
 areaRenomear.style.display = 'none';
 
-class nomeUser{
-    constructor(nomeU){
-        this.nomeU = nomeU;
-    }
-
-    
-}
-
 //classe das tarefas
 class Tarefa{
 
@@ -35,17 +27,32 @@ class Tarefa{
 }
 
 
-
-
 //função do botao de prosseguir da area login
 function prosseguirLogin(){
-    let nomeUser = document.getElementById('nomeUser').value;
+    //variavel que recebera o nome informado pelo usuario
+    let nomeUser = document.getElementById('nomeUser').value.trim();
     
+    //verifica se o input do campo nome nao esta vazio
     if(nomeUser == '' || nomeUser == ' '){
-        alert('Preencha corretamente o campo nome para prosseguir!');
-    }else{
-        console.log(nomeUser);
+        alert('Preencha o campo nome para prosseguir!');
+    }else{//recebe no localstorage o nome informado no input
+        localStorage.setItem('nomeUser', nomeUser);
         window.location.href = "../diashtml/segunda.html";
+    }
+}
+
+//funcao para verificacao de seguranca de acesso as paginas
+function aoCarregar(){
+    //recebe o nome definido pelo usuario que foi guardado no localStorage
+    let nome = localStorage.getItem('nomeUser');
+    console.log(nome);
+
+    //realizando a verificacao
+    if(!nome){//se nome for string vazia ou algo do tipo retorna false mas com negacao torna true e executa o bloco de codigo
+        window.location.href = '../../index.html'
+    }else{//recebe o nome do localstorage e passa para o span no header da pagina html
+        let nomeHeader = document.getElementById('nomeUser');
+        nomeHeader.innerHTML = nome;
     }
 }
 
