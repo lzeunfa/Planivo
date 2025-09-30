@@ -41,11 +41,21 @@ function prosseguirLogin(){
     }
 }
 
+/*funcao para verificacao de seguranca do acesso a 
+pagina de login que so deve ser acessada caso o usuario nao tenha colocado o seu nome*/
+function aoCarregarLogin(){
+    let nome = localStorage.getItem('nomeUser');
+
+    /*se no localStorage ja existir o nomeUser, ele nao deixa entrar na area de login*/
+    if(nome){
+        window.location.href = 'diashtml/segunda.html';
+    }
+}
+
 //funcao para verificacao de seguranca de acesso as paginas
 function aoCarregar(){
     //recebe o nome definido pelo usuario que foi guardado no localStorage
     let nome = localStorage.getItem('nomeUser');
-    console.log(nome);
 
     //realizando a verificacao
     if(!nome){//se nome for string vazia ou algo do tipo retorna false mas com negacao torna true e executa o bloco de codigo
