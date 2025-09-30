@@ -82,8 +82,13 @@ function aoCarregarDias(numDiaSem){
 
     //verifica se no localstorage existe um item com o numero do dia da pagina
     if(localStorage.getItem(numDiaSem)){
-        let areaTarefasVazia = document.getElementById('areaTarefasVazia');
-        areaTarefasVazia.style.display = "none";
+        //retira o conteiner com conteudo sem task
+        let areaContSemTask = document.getElementById('contSemTask');
+        areaContSemTask.style.display = "none";
+
+        //faz aparecer o container com conteudo com task
+        let areaContComTask = document.getElementById('contComTask');
+        areaContComTask.style.display = "flex";
     }
 }
 
@@ -104,7 +109,7 @@ function confirmRename(){
         localStorage.setItem('nomeUser', newName);
 
         areaRenomear.style.display = 'none';
-        aoCarregarDias();
+        window.location.reload();
     }
 }
 
@@ -136,6 +141,11 @@ function adicionarTarefa(numDia){
         //realiza a gravacao da tarefa no local storage
         bd.gravar(tarefa,numDia);
 
+        //faz fechar a area de adicionar tarefa
+        areaAddTask.style.display = 'none';
+
+        window.location.reload();
+
         alert('Tarefa cadastrada com sucesso!')
 
         //esvazia os valores dos inputs
@@ -148,6 +158,8 @@ function adicionarTarefa(numDia){
     }
 }
 
+/*funcao que fecha areas de adicionar tarefa e de renomear
+a partir do click no incone de fechar*/
 function fecharArea(Area){
     if(Area == 1){
     areaAddTask.style.display = "none";
