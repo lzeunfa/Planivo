@@ -44,7 +44,7 @@ body{
 #tituloRenomear{
     background-color: var(--bluePrin);
 
-    border-radius: 10px 10px 0px 0px;
+    border-radius: 20px 20px 0px 0px;
 
     color: white;
 
@@ -64,6 +64,8 @@ body{
     background-color: #D9D9D9;
 
     height: 35px;
+
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.477);
 }
 
 #iconFechar{
@@ -79,7 +81,7 @@ body{
 
     width: 80%;
 
-    border-radius: 10px;
+    border-radius: 20px;
 }
 
 #nomeTarefa, #hInicio, #hFim{
@@ -89,6 +91,8 @@ body{
     background-color: #D9D9D9;
 
     height: 35px;
+
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.477);
 }
 
 #btnNewTask, #btnConfirmarNome{
@@ -97,6 +101,8 @@ body{
 
     background-color: var(--bluePrin);
     color: white;
+
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.477);
 }
 
 #btnConfirmarNome{
