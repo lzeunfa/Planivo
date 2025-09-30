@@ -4,11 +4,12 @@ areaAddTask.style.display = "none";
 let areaRenomear = document.getElementById("areaRenomear");
 areaRenomear.style.display = 'none';
 
-//classe das tarefas
+//modelo das tarefas
 class Tarefa{
 
-    constructor(horarioI,horarioF,diaSem){
+    constructor(horarioI,nomeTarefa,horarioF,diaSem){
         this.horarioI = horarioI;
+        this.nomeTarefa = nomeTarefa;
         this.horarioF = horarioF;
         this.diaSem = diaSem;
     }
@@ -18,13 +19,27 @@ class Tarefa{
     validarDados(){
 
         for(let i in this){
-            if(this[i] == undefined || this[i].trim() == '' || this[i] == null){
+            if(this[i] == undefined || this[i] == '' || this[i] == null){
                 return false;
             }
         }
         return true;
     }
 }
+
+class Bd{
+    gravar(t,d){
+        //variavel que recupera as tarefas do dia
+        let tarefas = JSON.parse(localStorage.getItem(d)) || [];
+
+        //adiciona a nova tarefa grava no array da tarefa do dia
+        tarefas.push(t);
+
+        //salva o array de tarefas alterado no localStorage
+        localStorage.setItem(d, JSON.stringify(tarefas));
+    }
+}
+let bd = new Bd();
 
 
 //função do botao de prosseguir da area login
@@ -53,7 +68,7 @@ function aoCarregarLogin(){
 }
 
 //funcao para verificacao de seguranca de acesso as paginas
-function aoCarregarDias(){
+function aoCarregarDias(numDiaSem){
     //recebe o nome definido pelo usuario que foi guardado no localStorage
     let nome = localStorage.getItem('nomeUser');
 
@@ -63,6 +78,12 @@ function aoCarregarDias(){
     }else{//recebe o nome do localstorage e passa para o span no header da pagina html
         let nomeHeader = document.getElementById('nomeUser');
         nomeHeader.innerHTML = nome;
+    }
+
+    //verifica se no localstorage existe um item com o numero do dia da pagina
+    if(localStorage.getItem(numDiaSem)){
+        let areaTarefasVazia = document.getElementById('areaTarefasVazia');
+        areaTarefasVazia.style.display = "none";
     }
 }
 
@@ -90,6 +111,41 @@ function confirmRename(){
 //função para o btn que adiciona tarefa
 function novaTarefa(){
     areaAddTask.style.display = "flex";
+}
+
+//parametro numDia dias da semana de 1-7, comecando na segunda
+function adicionarTarefa(numDia){
+    //recebendo os inputs da area de novatarefa
+    let horarioI = document.getElementById('hInicio');
+    let nomeTarefa = document.getElementById('nomeTarefa');
+    let horarioF = document.getElementById('hFim');
+    let numDiaSem = numDia;
+
+    console.log(horarioI.value);
+    console.log(horarioF.value);
+    console.log(nomeTarefa.value);
+    console.log(numDia);
+
+    //criando nova tarefa
+    let tarefa = new Tarefa(
+        horarioI.value,nomeTarefa.value,
+        horarioF.value,numDiaSem
+    );
+
+    if(tarefa.validarDados()){
+        //realiza a gravacao da tarefa no local storage
+        bd.gravar(tarefa,numDia);
+
+        alert('Tarefa cadastrada com sucesso!')
+
+        //esvazia os valores dos inputs
+        horarioI.value = '';
+        nomeTarefa.value = '';
+        horarioF.value = '';
+        numDiaSem.value = '';
+    }else{
+        alert('Erro no cadastro da tarefa, confira os valores e tente novamente!')
+    }
 }
 
 function fecharArea(Area){
