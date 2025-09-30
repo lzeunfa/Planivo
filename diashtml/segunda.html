@@ -66,7 +66,7 @@
                 </form>
                 <!--area formulario-->
 
-                <!--btn para adicioanr tarefa-->
+                <!--btn para adicionar tarefa-->
                 <button class="p-1" id="btnNewTask" onclick="adicionarTarefa(1)">Adicionar tarefa</button>
 
             </div>
@@ -114,17 +114,41 @@
     </nav>
 
     <!--inicio area cronograma-->
-    <main id="areaTarefasVazia">
+    <main id="areaTarefas">
 
-        <div id="contSemTask" class="d-flex flex-column">
+        <!--conteudo que aparece quando nao tem tarefas adicionadas no dia-->
+        <div id="contSemTask" class="flex-column">
             <h1>Vamos adicionar uma tarefa para planejar <br> o seu dia?</h1>
 
             <!--button para começar a adicionar tarefa-->
             <button id="comPlan" class="p-2 align-self-center mt-4" onclick="novaTarefa()">Começar a planejar!</button>
         </div>
 
+        <!--conteudo que aparecera quando tiver tarefas adicionadas no dia-->
+        <div id="contComTask" class="flex-column">
+
+            <!--cnt da tarefa adicionada-->
+            <div class="cntTarefaAdicionada">
+
+                <!--div com as informacoes da tarefa-->
+                <div class="infosTarefa">
+                    <p class="txtHorarios mb-1">Horario I - Horario F</p>
+                    <p class="txtNomeTarefa">Nome da tarefa</p>
+                </div>
+
+                <!--icone de lixeira para apagar a tarefa-->
+                <img class="iconApagar align-self-center" src="/img/apagarIcon.png" alt="apagar-Icon" width="20px" height="20px" onclick="apagarTarefa()">
+
+            </div>
+
+            <!--btn para adicionar nova tarefa-->
+            <button class="align-self-end mt-5" id="btnAdicionarTarefa" onclick="novaTarefa()">+</button>
+
+        </div>
+
     </main>
     <!--fim area cronograma-->
+
 
     <!--inicio area footer-->
     <footer>
