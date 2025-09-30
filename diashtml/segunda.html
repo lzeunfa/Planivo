@@ -14,7 +14,7 @@
     <!--CSS-->
     <link rel="stylesheet" href="../Estilos/estiloPlanivo.css">
 </head>
-<body id="bodySeg" onload="aoCarregarDias()">
+<body id="bodySeg" onload="aoCarregarDias(1)">
 
     <!--div que aparece para renomear-->
     <div id="areaRenomear" class= " justify-content-center align-items-center">
@@ -67,7 +67,7 @@
                 <!--area formulario-->
 
                 <!--btn para adicioanr tarefa-->
-                <button class="p-1" id="btnNewTask" onclick="adicionarTarefa()">Adicionar tarefa</button>
+                <button class="p-1" id="btnNewTask" onclick="adicionarTarefa(1)">Adicionar tarefa</button>
 
             </div>
             <!--cnt para conteudos da div de adicionar task-->
@@ -114,7 +114,7 @@
     </nav>
 
     <!--inicio area cronograma-->
-    <main>
+    <main id="areaTarefasVazia">
 
         <div id="contSemTask" class="d-flex flex-column">
             <h1>Vamos adicionar uma tarefa para planejar <br> o seu dia?</h1>
