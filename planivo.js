@@ -53,7 +53,7 @@ function aoCarregarLogin(){
 }
 
 //funcao para verificacao de seguranca de acesso as paginas
-function aoCarregar(){
+function aoCarregarDias(){
     //recebe o nome definido pelo usuario que foi guardado no localStorage
     let nome = localStorage.getItem('nomeUser');
 
@@ -66,8 +66,22 @@ function aoCarregar(){
     }
 }
 
+//funcao onclick no simbolo de renomear para abrir tela de renomeacao
 function renomear(){
     areaRenomear.style.display = 'flex';
+}
+
+function confirmRename(){
+    let newName = document.getElementById("nomeAtt").value;
+
+    if(newName == '' || newName == ' '){
+        alert('Preencha o campo novo nome com texto válido!');
+    }else{
+        localStorage.setItem('nomeUser', newName);
+
+        areaRenomear.style.display = 'none';
+        aoCarregarDias();
+    }
 }
 
 //função para o btn que adiciona tarefa
