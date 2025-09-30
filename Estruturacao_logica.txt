@@ -1,18 +1,8 @@
-como funcionara adicionar uma nova tarefa:
-criar uma class Tarefa:
-constructor com horário inicial, nome da tarefa, horário final, dia da tarefa(será passado no onclick de adicioanr tarefa de cada dia)
-
-class bd como se fosse o banco de dados com função de cadastrar/gravar
-nele terá as operações com local storage
+criar uma div no corpo da pagina do dia para receber o btn de adicionar tarefa redondo e posteriormente as atividades
 
 
-function cadastrar tarefa:
-recebendo os valores dos inputs respectivos dos valores do constructor
-criar nova tarefa let tarefa = new Tarefa(classe)
-se a validação de dados da tarefa for verdadeira
-deve-se gravar a tarefa
-esvaziar os input
-senão
-exibir aviso de falta de dad+os para cadastrar tarefa
+Ajeitar id dos icones de fechar alterar pra class
 
-validação de dados da tarefa
+Ajustar css com os elementos do main de forma organizada
+os elementos estão todos la pra cima e meio misturados
+devo levalos para a area do main
