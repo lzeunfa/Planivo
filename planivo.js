@@ -18,7 +18,7 @@ class Tarefa{
     validarDados(){
 
         for(let i in this){
-            if(this[i] == undefined || this[i] == '' || this[i] == null){
+            if(this[i] == undefined || this[i].trim() == '' || this[i] == null){
                 return false;
             }
         }
@@ -33,7 +33,7 @@ function prosseguirLogin(){
     let nomeUser = document.getElementById('nomeUser').value.trim();
     
     //verifica se o input do campo nome nao esta vazio
-    if(nomeUser == '' || nomeUser == ' '){
+    if(nomeUser.trim() == ''){
         alert('Preencha o campo nome para prosseguir!');
     }else{//recebe no localstorage o nome informado no input
         localStorage.setItem('nomeUser', nomeUser);
@@ -71,10 +71,13 @@ function renomear(){
     areaRenomear.style.display = 'flex';
 }
 
+//funcao onclick para confirmacao de novo nome
 function confirmRename(){
+    //recebe o novo nome definido pelo usuario no input
     let newName = document.getElementById("nomeAtt").value;
 
-    if(newName == '' || newName == ' '){
+    //verificacao se é um valor válido
+    if(newName.trim() == ''){
         alert('Preencha o campo novo nome com texto válido!');
     }else{
         localStorage.setItem('nomeUser', newName);
