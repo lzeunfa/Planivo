@@ -39,6 +39,10 @@ class Bd{
         //salva o array de tarefas alterado no localStorage
         localStorage.setItem(d, JSON.stringify(tarefas));
     }
+
+    remover(d){
+        localStorage.removeItem(d);
+    }
 }
 let bd = new Bd();
 
@@ -90,6 +94,9 @@ function aoCarregarDias(numDiaSem){
         //faz aparecer o container com conteudo com task
         let areaContComTask = document.getElementById('contComTask');
         areaContComTask.style.display = "flex";
+
+        let btnAddTarefa = document.getElementById("contBtnNovaTarefa");
+        btnAddTarefa.style.display = 'flex';
 
         //chamando a função para criação do html das tarefas
         carregarTarefas(numDiaSem);
@@ -195,6 +202,32 @@ function carregarTarefas(numDia){
         containerTasks.appendChild(divTask);
     });
 
+}
+
+//funcao para apagar tarefa clicando no incoe de lixeira
+function apagarTarefa(diaSem,index){
+    /*recebe o objeto com a determinada chave e se nao existir recebe um array*/
+    let tarefas = JSON.parse(localStorage.getItem(diaSem)) || [];
+
+    /*ordenando as tarefas por horario inicial para evitar prolema no splice e apagar a tarefa errada*/
+    tarefas.sort((a,b) => a.horarioI.localeCompare(b.horarioI));
+
+    //removendo a tarefa pelo seu indice
+    tarefas.splice(index,1);    
+
+    //verifica se o array ainda tem tarefas
+    if(tarefas.length === 0){
+        bd.remover(diaSem);
+        let btnAddTarefa = document.getElementById("contBtnNovaTarefa");
+        btnAddTarefa.style.display = 'none';
+        window.location.reload();
+    }else{
+        //atualiza no localstorage
+        localStorage.setItem(diaSem, JSON.stringify(tarefas));
+    }
+
+    /*recarrega a pagina e consequentemente puxa a funcao de carregar tarefa novamente*/
+    carregarTarefas(diaSem);
 }
 
 /*funcao que fecha areas de adicionar tarefa e de renomear

@@ -14,7 +14,69 @@
     <!--CSS-->
     <link rel="stylesheet" href="../Estilos/estiloPlanivo.css">
 </head>
-<body id="bodySex">
+<body id="bodySex" onload="aoCarregarDias(5)">
+
+    <!--div que aparece para renomear-->
+    <div id="areaRenomear" class= " justify-content-center align-items-center">
+
+        <!--cnt da area de renomear-->
+        <div id="cntRenomear">
+
+            <!--header do container de renomear-->
+            <div id="tituloRenomear" class="d-flex flex-column mb-4">
+                <p class="p-2">Renomear:</p>
+                <img class="align-self-end mt-2 iconFechar" src="/img/iconFechar.png" alt="fechar" width="28px" onclick="fecharArea(0)">
+            </div>
+
+            <div id="cntConteudoRnm" class="d-flex flex-column align-items-center">
+                <input type="tex" name="nomeAtt" id="nomeAtt" placeholder="Novo nome" class="mb-4 p-1">
+                
+                <button id="btnConfirmarNome" onclick="confirmRename()" class="m-2 align-self-end">Confirmar</button>
+            </div>
+            
+            
+        </div>
+
+    </div>
+    <!--fim area para renomear-->
+
+    <!--cnt que aparece para adicionar tarefa-->
+    <div id="areaAddTask" class= "justify-content-center align-items-center">
+
+            <!--cnt para conteudos da div de adicionar task-->
+            <div id="cntNovaTask" class="p-3 d-flex flex-column">
+
+                <!--icone de fechar area-->
+                <img class="align-self-end mt-2 iconFechar" src="/img/iconFechar.png" alt="fechar" width="30px" onclick="fecharArea(1)">
+
+                <!--logo-->
+                <img src="/img/LogoPlanivo.png" alt="logo" width="120px">
+                <p id="pAddTask">Adicionando <br> nova tarefa</p>
+
+                <!--area formulario-->
+                <form class="d-flex flex-column">
+                    <label for="hInicio">Horário de início</label>
+                    <input type="time" name="hInicio" id="hInicio" class="mb-3">
+
+                    <label for="nomeTarefa">Nome da tarefa</label>
+                    <input type="tel" name="nomeTarefa" id="nomeTarefa" class="mb-3">
+
+                    <label for="hFim">Horário de término</label>
+                    <input type="time" name="hFim" id="hFim" class="mb-3">
+                </form>
+                <!--area formulario-->
+
+                <!--btn para adicionar tarefa-->
+                <button class="p-1" id="btnNewTask" onclick="adicionarTarefa(5)">Adicionar tarefa</button>
+
+            </div>
+            <!--cnt para conteudos da div de adicionar task-->
+
+    </div>
+    <!-- fim cnt que aparece para adicionar tarefa-->
+
+    <!--abaixo começa a estruturação existente da aplicação-->
+
     <!--Inicio area header-->
     <header class="d-flex flex-column align-items-center">
 
@@ -23,8 +85,11 @@
 
         <!--conteiner para o nome do usuario-->
         <div id="containerNome" class="d-flex align-items-center">
-            <p id="pUser">Olá, <span id="nomeHeader">Eliseu</span></p>
-            <img class="ml-1 mb-3" src="../img/renomear.png" alt="renomear-icon" width="24px" height="23px">
+            <p id="pUser">Olá, <span id="nomeUser">.</span></p>
+
+            <!--icone para renomear-->
+            <img class="ml-1 mb-3" src="../img/renomear.png" alt="renomear-icon" width="24px" height="23px" onclick="renomear()">
+
         </div>
 
     </header>
@@ -49,17 +114,43 @@
     </nav>
 
     <!--inicio area cronograma-->
-    <main>
+    <main id="areaTarefas">
 
-        <div id="contSemTask" class="d-flex flex-column">
+        <!--conteudo que aparece quando nao tem tarefas adicionadas no dia-->
+        <div id="contSemTask" class="flex-column">
             <h1>Vamos adicionar uma tarefa para planejar <br> o seu dia?</h1>
 
             <!--button para começar a adicionar tarefa-->
-            <button id="comPlan" class="p-2 align-self-center mt-4" onclick="adicionarTarefa()">Começar a planejar!</button>
+            <button id="comPlan" class="p-2 align-self-center mt-4" onclick="novaTarefa()">Começar a planejar!</button>
+        </div>
+
+        <!--conteudo que aparecera quando tiver tarefas adicionadas no dia-->
+        <div id="contComTask" class="flex-column">
+
+            <!--cnt da tarefa adicionada-->
+            <div class="cntTarefaAdicionada">
+
+                <!--div com as informacoes da tarefa-->
+                <div class="infosTarefa">
+                    <p class="txtHorarios mb-1">Horario I - Horario F</p>
+                    <p class="txtNomeTarefa">Nome da tarefa</p>
+                </div>
+
+                <!--icone de lixeira para apagar a tarefa-->
+                <img class="iconApagar align-self-center" src="/img/apagarIcon.png" alt="apagar-Icon" width="20px" height="20px" onclick="apagarTarefa()">
+
+            </div>
+
+        </div>
+
+        <div id="contBtnNovaTarefa" class="justify-content-end">
+            <!--btn para adicionar nova tarefa-->
+            <button class="mt-5" id="btnAdicionarTarefa"   onclick="novaTarefa()">+</button>
         </div>
 
     </main>
     <!--fim area cronograma-->
+
 
     <!--inicio area footer-->
     <footer>
@@ -69,5 +160,6 @@
     </footer>
     <!--fim area footer-->
 
+    <script src="/planivo.js"></script>
 </body>
 </html>

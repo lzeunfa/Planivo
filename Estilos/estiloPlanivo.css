@@ -238,6 +238,10 @@ main h1{
 .txtHorarios{
     color: var(--txtEspec);
 }
+
+#contBtnNovaTarefa{
+    display: none;
+}
 /*fim area main cronograma*/
 
 /*inicio area footer*/
