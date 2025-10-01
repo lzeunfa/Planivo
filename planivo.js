@@ -27,6 +27,7 @@ class Tarefa{
     }
 }
 
+//modelo bd como se fosse um banco de dados
 class Bd{
     gravar(t,d){
         //variavel que recupera as tarefas do dia
@@ -89,6 +90,8 @@ function aoCarregarDias(numDiaSem){
         //faz aparecer o container com conteudo com task
         let areaContComTask = document.getElementById('contComTask');
         areaContComTask.style.display = "flex";
+
+        carregarTarefas(numDiaSem);
     }
 }
 
@@ -156,6 +159,41 @@ function adicionarTarefa(numDia){
     }else{
         alert('Erro no cadastro da tarefa, confira os valores e tente novamente!')
     }
+}
+
+//funcao para carregar as tarefas e mostrar elas no respectivo dia
+function carregarTarefas(numDia){
+
+    /*recebe o objeto com a determinada chave e se nao existir recebe um array*/
+    let tarefas = JSON.parse(localStorage.getItem(numDia)) || [];
+
+    //recebe o container que recebera as tarefas
+    let containerTasks = document.getElementById("contComTask");
+    //limpa o container antes de renderizar
+    containerTasks.innerHTML = '';
+    containerTasks.className = 'flex-column';
+
+    //ordenando as tarefas por horario inicial
+    tarefas.sort((a,b) => a.horarioI.localeCompare(b.horarioI));
+
+    tarefas.forEach((tarefa,index) => {
+        let divTask = document.createElement("div");
+        divTask.className = 'cntTarefaAdicionada';
+
+        //html das tarefas
+        divTask.innerHTML = `
+        <div class="infosTarefa">
+            <p class="txtHorarios mb-1">${tarefa.horarioI} - ${tarefa.horarioF}</p>
+            <p class="txtNomeTarefa">${tarefa.nomeTarefa}</p>
+        </div>
+
+        <img class="iconApagar align-self-center" src="/img/apagarIcon.png" alt="apagar-Icon" width="20px" height="20px" onclick="apagarTarefa(${numDia},${index})">
+        `;
+
+        containerTasks.appendChild(divTask);
+    });
+
+
 }
 
 /*funcao que fecha areas de adicionar tarefa e de renomear
