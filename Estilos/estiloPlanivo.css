@@ -3,7 +3,7 @@
 /*criação de fonte por arquivo*/
 @font-face {
     font-family: 'RobotoMd';
-    src: url(/Planivo/Fonts/Roboto-Medium.ttf) format('truetype');
+    src: url(/Fonts/Roboto-Medium.ttf) format('truetype');
 }
 
 /*configs gerais*/

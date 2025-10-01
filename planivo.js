@@ -57,7 +57,7 @@ function prosseguirLogin(){
         alert('Preencha o campo nome para prosseguir!');
     }else{//recebe no localstorage o nome informado no input
         localStorage.setItem('nomeUser', nomeUser);
-        window.location.href = "/Planivo/diashtml/segunda.html";
+        window.location.href = "/diashtml/segunda.html";
     }
 }
 
@@ -68,7 +68,7 @@ function aoCarregarLogin(){
 
     /*se no localStorage ja existir o nomeUser, ele nao deixa entrar na area de login*/
     if(nome){
-        window.location.href = '/Planivo/diashtml/segunda.html';
+        window.location.href = '/diashtml/segunda.html';
     }
 }
 
@@ -79,7 +79,7 @@ function aoCarregarDias(numDiaSem){
 
     //realizando a verificacao
     if(!nome){//se nome for string vazia ou algo do tipo retorna false mas com negacao torna true e executa o bloco de codigo
-        window.location.href = '/Planivo/index.html'
+        window.location.href = '/../index.html'
     }else{//recebe o nome do localstorage e passa para o span no header da pagina html
         let nomeHeader = document.getElementById('nomeUser');
         nomeHeader.innerHTML = nome;
@@ -196,7 +196,7 @@ function carregarTarefas(numDia){
             <p class="txtNomeTarefa">${tarefa.nomeTarefa}</p>
         </div>
 
-        <img class="iconApagar align-self-center" src="/Planivo/img/apagarIcon.png" alt="apagar-Icon" width="20px" height="20px" onclick="apagarTarefa(${numDia},${index})">
+        <img class="iconApagar align-self-center" src="/img/apagarIcon.png" alt="apagar-Icon" width="20px" height="20px" onclick="apagarTarefa(${numDia},${index})">
         `;
 
         containerTasks.appendChild(divTask);
