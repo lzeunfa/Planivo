@@ -91,6 +91,7 @@ function aoCarregarDias(numDiaSem){
         let areaContComTask = document.getElementById('contComTask');
         areaContComTask.style.display = "flex";
 
+        //chamando a função para criação do html das tarefas
         carregarTarefas(numDiaSem);
     }
 }
@@ -176,6 +177,7 @@ function carregarTarefas(numDia){
     //ordenando as tarefas por horario inicial
     tarefas.sort((a,b) => a.horarioI.localeCompare(b.horarioI));
 
+    //percorrendo cada elemento do objeto e criando seu html
     tarefas.forEach((tarefa,index) => {
         let divTask = document.createElement("div");
         divTask.className = 'cntTarefaAdicionada';
@@ -192,7 +194,6 @@ function carregarTarefas(numDia){
 
         containerTasks.appendChild(divTask);
     });
-
 
 }
 

@@ -1,1 +1,3 @@
 onclick="apagarTarefa(diaSem,idNoArray)
+
+se nao existir nome mas tiver tarefas adicionadas, ao jogar pra pagina de login, as tarefas antigas devem ser deletadas do local storage
