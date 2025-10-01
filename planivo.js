@@ -79,7 +79,7 @@ function aoCarregarDias(numDiaSem){
 
     //realizando a verificacao
     if(!nome){//se nome for string vazia ou algo do tipo retorna false mas com negacao torna true e executa o bloco de codigo
-        window.location.href = 'index.html'
+        window.location.href = '/Planivo/index.html'
     }else{//recebe o nome do localstorage e passa para o span no header da pagina html
         let nomeHeader = document.getElementById('nomeUser');
         nomeHeader.innerHTML = nome;
