@@ -1,8 +1,1 @@
-criar uma div no corpo da pagina do dia para receber o btn de adicionar tarefa redondo e posteriormente as atividades
-
-
-Ajeitar id dos icones de fechar alterar pra class
-
-Ajustar css com os elementos do main de forma organizada
-os elementos estão todos la pra cima e meio misturados
-devo levalos para a area do main
+onclick="apagarTarefa(diaSem,idNoArray)
