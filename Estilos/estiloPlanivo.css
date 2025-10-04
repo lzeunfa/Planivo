@@ -269,4 +269,9 @@ footer{
     bottom: 0;
 }
 
+a{
+    text-decoration: underline;
+    color: white;
+}
+
 /*fim area footer*/
