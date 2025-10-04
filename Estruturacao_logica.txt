@@ -1,1 +1,3 @@
 enfrentando problemas com o github pages
+
+realizar verificacao se hi é maior que hf
