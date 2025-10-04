@@ -6,15 +6,17 @@
     <title>Planivo</title>
 
     <!--Favicon-->
-    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
     <!--BOOTSTRAP-->
-    <link rel="stylesheet" href="../bootstrap-4.6.2-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/bootstrap-4.6.2-dist/css/bootstrap.min.css">
 
     <!--CSS-->
-    <link rel="stylesheet" href="../Estilos/estiloPlanivo.css">
+    <link rel="stylesheet" href="/Estilos/estiloPlanivo.css">
 </head>
 <body id="bodyDom" onload="aoCarregarDias(7)">
+
+    <!--areas que aparecem com interacoes-->
 
     <!--div que aparece para renomear-->
     <div id="areaRenomear" class= " justify-content-center align-items-center">
@@ -75,20 +77,48 @@
     </div>
     <!-- fim cnt que aparece para adicionar tarefa-->
 
+    <!--area para confirmação de exclusão de tarefa-->
+    <div id="areaConfirmExclu" class= " justify-content-center align-items-center">
+
+        <!--cnt da area de confirmacao de exclusao-->
+        <div id="cntConfirmExclu">
+
+            <!--header do container de confirmacao de exclusao-->
+            <div id="headerConfirmExclu" class="d-flex align-items-center justify-content-between">
+                <img src="/img/LogoPlanivo.png" alt="logo-planivo" width="120px" class="m-2">
+
+                <!--icone de fechar area-->
+                <img class="mr-2 mt-1" src="/img/iconFechar.png" alt="fechar" width="30px" onclick="fecharArea(2)">
+            </div>
+
+            <div id="cntContconfirmExclu" class="d-flex flex-column align-items-center">
+                <p id="pConfirmExclu" class="align-self-start p-3">Confirmar <br> exclusão de tarefa</p>
+                
+                <button id="btnConfirmExclu" onclick="confirmExclu()" class="m-2 align-self-end">Confirmar</button>
+            </div>
+            
+            
+        </div>
+
+    </div>
+    <!--fim area para confirmação de exclusão de tarefa-->
+
+    <!-- // -->
+
     <!--abaixo começa a estruturação existente da aplicação-->
 
     <!--Inicio area header-->
     <header class="d-flex flex-column align-items-center">
 
         <!--img logo-->
-        <img class="mt-2" src="../img/LogoPlanivo.png" alt="logo" width="125px">
+        <img class="mt-2" src="/img/LogoPlanivo.png" alt="logo" width="125px">
 
         <!--conteiner para o nome do usuario-->
         <div id="containerNome" class="d-flex align-items-center">
             <p id="pUser">Olá, <span id="nomeUser">.</span></p>
 
             <!--icone para renomear-->
-            <img class="ml-1 mb-3" src="../img/renomear.png" alt="renomear-icon" width="24px" height="23px" onclick="renomear()">
+            <img class="ml-1 mb-3" src="/img/renomear.png" alt="renomear-icon" width="24px" height="23px" onclick="renomear()">
 
         </div>
 
