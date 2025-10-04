@@ -4,6 +4,13 @@ areaAddTask.style.display = "none";
 let areaRenomear = document.getElementById("areaRenomear");
 areaRenomear.style.display = 'none';
 
+let areaConfirmExclu = document.getElementById("areaConfirmExclu");
+areaConfirmExclu.style.display = 'none';
+
+let tarefaDiaSel = null;
+let tarefaIndexSel = null;
+
+
 //modelo das tarefas
 class Tarefa{
 
@@ -206,36 +213,47 @@ function carregarTarefas(numDia){
 
 //funcao para apagar tarefa clicando no incoe de lixeira
 function apagarTarefa(diaSem,index){
-    /*recebe o objeto com a determinada chave e se nao existir recebe um array*/
-    let tarefas = JSON.parse(localStorage.getItem(diaSem)) || [];
+    areaConfirmExclu.style.display = 'flex';
+
+    tarefaDiaSel = diaSem;
+    tarefaIndexSel = index;
+}
+
+
+//confirmacao de exclusao de tarefa
+function confirmExclu(){
+    //recebe o objeto com a determinada chave e se nao existir recebe um array
+    let tarefas = JSON.parse(localStorage.getItem(tarefaDiaSel)) || [];
 
     /*ordenando as tarefas por horario inicial para evitar prolema no splice e apagar a tarefa errada*/
     tarefas.sort((a,b) => a.horarioI.localeCompare(b.horarioI));
 
     //removendo a tarefa pelo seu indice
-    tarefas.splice(index,1);    
+    tarefas.splice(tarefaIndexSel,1);    
 
     //verifica se o array ainda tem tarefas
     if(tarefas.length === 0){
-        bd.remover(diaSem);
+        bd.remover(tarefaDiaSel);
         let btnAddTarefa = document.getElementById("contBtnNovaTarefa");
         btnAddTarefa.style.display = 'none';
         window.location.reload();
     }else{
         //atualiza no localstorage
-        localStorage.setItem(diaSem, JSON.stringify(tarefas));
+        localStorage.setItem(tarefaDiaSel, JSON.stringify(tarefas));
     }
+    areaConfirmExclu.style.display = 'none';
 
     /*recarrega a pagina e consequentemente puxa a funcao de carregar tarefa novamente*/
-    carregarTarefas(diaSem);
+    carregarTarefas(tarefaDiaSel);
 }
 
-/*funcao que fecha areas de adicionar tarefa e de renomear
-a partir do click no incone de fechar*/
+/*funcao que fecha cnts de interacao*/
 function fecharArea(Area){
     if(Area == 1){
     areaAddTask.style.display = "none";
-    }else{
+    }else if(Area == 0){
     areaRenomear.style.display = 'none';
+    }else{
+        areaConfirmExclu.style.display = 'none';
     }
 }
