@@ -39,6 +39,42 @@ selecionados iniciando na segunda<br>
 -btn para adicionar a tarefa<br>
 -rodapé
 
+* Area para adicionar tarefa:<br>
+-Container com fundo opaco e dentro dele<br>
+outro container com fundo branco para a area das<br>
+infos da tarefa.
+-Tera a logo da aplicação, inputs para <br>
+adicionar as infos da tarefa como horario<br>
+inicial e final e o nome da tarefa e por fim um btn<br>
+para adicionar a tarefa e suas infos ao dia.
+- icone de x para fechar a area.
+
+* Tela principal com tarefa adicionada: <br>
+-Mesma estrutura da tela principal vazia porém com<br>
+container destinado as tarefas adicionadas com<br>
+horario inicial final e nome da tarefa acompanhado<br>
+com icone de lixeira para deletar a tarefa.
+-Abaixo doconteiner de tarefa existirá um btn redondo verde<br>
+com mesma funcionaldiade do btn da tela vazia<br>
+para adicionar uma nova tarefa ao dia.
+
+* Area para renomear:
+-Container com fundo opaco e dentro dele <br>
+container com fundo branco para a area dos<br>
+inputs para receber novo nome e btn de confirmação.
+- icone de x para fechar a area.
+
+* Area para confirmação de exclusão de tarefa:
+- -Container com fundo opaco e dentro dele <br>
+container com fundo com texto de confirmar exclusão<br>
+e com btn de confirmar na cor vermelha.
+- icone de x para fechar a area.
+
+
+
+
+
+
 
 [acessar design figma](https://www.figma.com/proto/9mYFph96xaUJJVgOgpNrhj/Planivo?node-id=0-1&t=9jDWumtSyUeq8vdA-1)
 
@@ -48,5 +84,5 @@ selecionados iniciando na segunda<br>
 - Comentar o código inteiro;<br>
 - Classes e Ids de fácil interpretação;<br>
 - Código limpo;<br>
-- Utilizar recursos ES6;<br>
+- Utilizar recursos ES6 OO;<br>
 [acessar](https://lzeunfa.github.io/Planivo/)
