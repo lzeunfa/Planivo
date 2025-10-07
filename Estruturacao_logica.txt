@@ -1,3 +1,5 @@
 enfrentando problemas com o github pages
 
-realizar verificacao se hi é maior que hf
+arrumar quando tiver muitas tarefas e for fazer interações a tela subir top
+
+pesquisar qual forma fica melhor o header
