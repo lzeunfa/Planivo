@@ -2,4 +2,6 @@ enfrentando problemas com o github pages
 
 arrumar quando tiver muitas tarefas e for fazer interações a tela subir top
 
+arrumar quando tem mtas tarefas a tela tem rolagem horizontal
+
 pesquisar qual forma fica melhor o header
