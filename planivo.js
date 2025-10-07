@@ -145,36 +145,38 @@ function adicionarTarefa(numDia){
     let horarioF = document.getElementById('hFim');
     let numDiaSem = numDia;
 
-    console.log(horarioI.value);
-    console.log(horarioF.value);
-    console.log(nomeTarefa.value);
-    console.log(numDia);
-
     //criando nova tarefa
     let tarefa = new Tarefa(
         horarioI.value,nomeTarefa.value,
         horarioF.value,numDiaSem
     );
 
-    if(tarefa.validarDados()){
-        //realiza a gravacao da tarefa no local storage
-        bd.gravar(tarefa,numDia);
-
-        //faz fechar a area de adicionar tarefa
-        areaAddTask.style.display = 'none';
-
-        window.location.reload();
-
-        alert('Tarefa cadastrada com sucesso!')
-
-        //esvazia os valores dos inputs
-        horarioI.value = '';
-        nomeTarefa.value = '';
-        horarioF.value = '';
-        numDiaSem.value = '';
-    }else{
-        alert('Erro no cadastro da tarefa, confira os valores e tente novamente!')
+    if(horarioI.value>horarioF.value){
+        //caso o horario inicial seja maior que o horario final, mostra erro no cadastro da tarefa
+        alert('Erro no cadastro da tarefa, informe um horário válido!');
+        return;
     }
+    
+    if(!tarefa.validarDados()){
+        alert('Erro no cadastro da tarefa, confira os valores e tente novamente!');
+        return;
+    }
+
+    //realiza a gravacao da tarefa no local storage
+    bd.gravar(tarefa,numDia);
+
+    //faz fechar a area de adicionar tarefa
+    areaAddTask.style.display = 'none';
+
+    alert('Tarefa cadastrada com sucesso!')
+
+    //esvazia os valores dos inputs
+    horarioI.value = '';
+    nomeTarefa.value = '';
+    horarioF.value = '';
+    numDiaSem.value = '';
+
+    carregarTarefas(numDia);
 }
 
 //funcao para carregar as tarefas e mostrar elas no respectivo dia
@@ -210,6 +212,17 @@ function carregarTarefas(numDia){
         containerTasks.appendChild(divTask);
     });
 
+    //retira o conteiner com conteudo sem task
+    let areaContSemTask = document.getElementById('contSemTask');
+    areaContSemTask.style.display = "none";
+
+    //faz aparecer o container com conteudo com task
+    let areaContComTask = document.getElementById('contComTask');
+    areaContComTask.style.display = "flex";
+
+    let btnAddTarefa = document.getElementById("contBtnNovaTarefa");
+    btnAddTarefa.style.display = 'flex';
+    
 }
 
 //funcao para apagar tarefa clicando no incoe de lixeira
@@ -244,7 +257,7 @@ function confirmExclu(){
     }
     areaConfirmExclu.style.display = 'none';
 
-    /*recarrega a pagina e consequentemente puxa a funcao de carregar tarefa novamente*/
+    /*atualiza a pagina e consequentemente puxa a funcao de carregar tarefa novamente*/
     carregarTarefas(tarefaDiaSel);
 }
 
