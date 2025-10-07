@@ -6,6 +6,16 @@
     src: url(/Fonts/Roboto-Medium.ttf) format('truetype');
 }
 
+/*animacao de entrada para ser mais suave*/
+@keyframes  opacidade{
+    0%{
+        opacity: 0.3;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
 /*configs gerais*/
 *{
     margin: 0px;
@@ -46,6 +56,10 @@ body{
 
     height: 100dvh;
     width: 100dvw;
+
+    animation: opacidade 0.5s ease;
+
+    display: none;
 }
 
 #headerConfirmExclu{
@@ -189,6 +203,8 @@ nav ul li a{
 main{
     margin-top: 30px;
     padding: 10px;
+
+    animation: opacidade 1.5s ease;
 }
 
 main h1{
