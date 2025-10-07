@@ -1,7 +1,0 @@
-enfrentando problemas com o github pages
-
-arrumar quando tiver muitas tarefas e for fazer interações a tela subir top
-
-alterar bootstrap do btn de adicionar tarefa todos os dias
-
-pesquisar qual forma fica melhor o header
