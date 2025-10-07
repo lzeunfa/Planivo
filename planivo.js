@@ -132,6 +132,7 @@ function aoCarregarDias(numDiaSem){
 //funcao onclick no simbolo de renomear para abrir tela de renomeacao
 function renomear(){
     areaRenomear.style.display = 'flex';
+    overFlowHidden();
 }
 
 //funcao onclick para confirmacao de novo nome
@@ -153,6 +154,20 @@ function confirmRename(){
 //função para o btn que adiciona tarefa
 function novaTarefa(){
     areaAddTask.style.display = "flex";
+
+    //sobe a pagina
+    window.scrollTo(0,0);
+    overFlowHidden();
+}
+
+/*funcao para esconder overflow evitando rolagem vertical*/
+function overFlowHidden(){
+    document.body.style.overflow = 'hidden';
+}
+
+//funcao para voltar a aparecer overflow evitando
+function overFlowVisible(){
+    document.body.style.overflow = 'visible';
 }
 
 //parametro numDia dias da semana de 1-7, comecando na segunda
@@ -194,6 +209,8 @@ function adicionarTarefa(numDia){
     nomeTarefa.value = '';
     horarioF.value = '';
     numDiaSem.value = '';
+
+    overFlowVisible();
 
     carregarTarefas(numDia);
 }
@@ -253,6 +270,10 @@ function apagarTarefa(diaSem,index){
     de confirmacao de exclusao caso confirme*/
     tarefaDiaSel = diaSem;
     tarefaIndexSel = index;
+
+    window.scrollTo(0,0);
+
+    overFlowHidden();
 }
 
 
@@ -279,6 +300,7 @@ function confirmExclu(){
     }
     areaConfirmExclu.style.display = 'none';
 
+    overFlowVisible();
     /*atualiza a pagina e consequentemente puxa a funcao de carregar tarefa novamente*/
     carregarTarefas(tarefaDiaSel);
 }
@@ -292,4 +314,5 @@ function fecharArea(Area){
     }else{
         areaConfirmExclu.style.display = 'none';
     }
+    overFlowVisible();
 }
