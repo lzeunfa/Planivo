@@ -1,12 +1,17 @@
+//area de adicionar task
 let areaAddTask = document.getElementById("areaAddTask");
 areaAddTask.style.display = "none";
 
+//area para renomear
 let areaRenomear = document.getElementById("areaRenomear");
 areaRenomear.style.display = 'none';
 
+//area para confirmar exclusão
 let areaConfirmExclu = document.getElementById("areaConfirmExclu");
 areaConfirmExclu.style.display = 'none';
 
+/*variavel externa para passar valores entre as funções
+apagar tarefas e confirmar exclusao*/
 let tarefaDiaSel = null;
 let tarefaIndexSel = null;
 
@@ -36,6 +41,8 @@ class Tarefa{
 
 //modelo bd como se fosse um banco de dados
 class Bd{
+
+    //metodo para gravar tarefa
     gravar(t,d){
         //variavel que recupera as tarefas do dia
         let tarefas = JSON.parse(localStorage.getItem(d)) || [];
@@ -47,6 +54,17 @@ class Bd{
         localStorage.setItem(d, JSON.stringify(tarefas));
     }
 
+    //metodo para buscar tarefa
+    getTarefas(dia){
+        return JSON.parse(localStorage.getItem(dia)) || [];
+    }
+
+    //metodo para salvar tarefa
+    setTarefa(dia,tarefas){
+        localStorage.setItem(dia,JSON.stringify(tarefas));
+    }
+
+    //metodo para remover tarefa
     remover(d){
         localStorage.removeItem(d);
     }
@@ -151,12 +169,13 @@ function adicionarTarefa(numDia){
         horarioF.value,numDiaSem
     );
 
+    //caso o horario inicial seja maior que o horario final, mostra erro no cadastro da tarefa
     if(horarioI.value>horarioF.value){
-        //caso o horario inicial seja maior que o horario final, mostra erro no cadastro da tarefa
         alert('Erro no cadastro da tarefa, informe um horário válido!');
         return;
     }
     
+    //mostra erro no cadastro de tarefas caso algum input não tenha sido preenchido
     if(!tarefa.validarDados()){
         alert('Erro no cadastro da tarefa, confira os valores e tente novamente!');
         return;
@@ -183,7 +202,7 @@ function adicionarTarefa(numDia){
 function carregarTarefas(numDia){
 
     /*recebe o objeto com a determinada chave e se nao existir recebe um array*/
-    let tarefas = JSON.parse(localStorage.getItem(numDia)) || [];
+    let tarefas = bd.getTarefas(numDia);
 
     //recebe o container que recebera as tarefas
     let containerTasks = document.getElementById("contComTask");
@@ -220,6 +239,7 @@ function carregarTarefas(numDia){
     let areaContComTask = document.getElementById('contComTask');
     areaContComTask.style.display = "flex";
 
+    //faz aparecer o btn de adicionar tarefa redondo
     let btnAddTarefa = document.getElementById("contBtnNovaTarefa");
     btnAddTarefa.style.display = 'flex';
     
@@ -229,6 +249,8 @@ function carregarTarefas(numDia){
 function apagarTarefa(diaSem,index){
     areaConfirmExclu.style.display = 'flex';
 
+    /*atualiza o valor dentro da variaveel pra passar pra funcao
+    de confirmacao de exclusao caso confirme*/
     tarefaDiaSel = diaSem;
     tarefaIndexSel = index;
 }
@@ -237,7 +259,7 @@ function apagarTarefa(diaSem,index){
 //confirmacao de exclusao de tarefa
 function confirmExclu(){
     //recebe o objeto com a determinada chave e se nao existir recebe um array
-    let tarefas = JSON.parse(localStorage.getItem(tarefaDiaSel)) || [];
+    let tarefas = bd.getTarefas(tarefaDiaSel);
 
     /*ordenando as tarefas por horario inicial para evitar prolema no splice e apagar a tarefa errada*/
     tarefas.sort((a,b) => a.horarioI.localeCompare(b.horarioI));
@@ -253,7 +275,7 @@ function confirmExclu(){
         window.location.reload();
     }else{
         //atualiza no localstorage
-        localStorage.setItem(tarefaDiaSel, JSON.stringify(tarefas));
+        bd.setTarefa(tarefaDiaSel,tarefas);
     }
     areaConfirmExclu.style.display = 'none';
 
@@ -264,9 +286,9 @@ function confirmExclu(){
 /*funcao que fecha cnts de interacao*/
 function fecharArea(Area){
     if(Area == 1){
-    areaAddTask.style.display = "none";
+        areaAddTask.style.display = "none";
     }else if(Area == 0){
-    areaRenomear.style.display = 'none';
+        areaRenomear.style.display = 'none';
     }else{
         areaConfirmExclu.style.display = 'none';
     }
