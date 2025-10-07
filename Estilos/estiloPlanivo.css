@@ -44,8 +44,8 @@ body{
 
     position: absolute;
 
-    width: 100dvw;
     height: 100dvh;
+    width: 100dvw;
 }
 
 #headerConfirmExclu{
@@ -157,7 +157,6 @@ nav{
 
     border-radius: 30px;
     height: 40px;
-    width: 100vw;
 
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.477);
 
