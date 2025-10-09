@@ -17,6 +17,9 @@ contSemTask.style.display = 'none';
 const contComTask = document.getElementById("contComTask");
 contComTask.style.display = 'none';
 
+//definindo o btn de adicionar tarefa como variavel
+const btnAddTarefa = document.getElementById("contBtnNovaTarefa");
+
 /*variavel externa para passar valores entre as funções
 apagar tarefas e confirmar exclusao*/
 let tarefaDiaSel = null;
@@ -130,7 +133,7 @@ function aoCarregarDias(numDiaSem){
         //faz aparecer o container com conteudo com task
         contComTask.style.display = "flex";
 
-        let btnAddTarefa = document.getElementById("contBtnNovaTarefa");
+        //faz aparecer o btn de adicionar tarefa redondo
         btnAddTarefa.style.display = 'flex';
 
         //chamando a função para criação do html das tarefas
@@ -232,8 +235,7 @@ function carregarTarefas(numDia){
     //recebe o container que recebera as tarefas
     let containerTasks = document.getElementById("contComTask");
     //limpa o container antes de renderizar
-    containerTasks.innerHTML = '';
-    containerTasks.className = 'flex-column';
+    contComTask.innerHTML = '';
 
     //ordenando as tarefas por horario inicial
     tarefas.sort((a,b) => a.horarioI.localeCompare(b.horarioI));
@@ -299,7 +301,13 @@ function confirmExclu(){
         bd.remover(tarefaDiaSel);
         let btnAddTarefa = document.getElementById("contBtnNovaTarefa");
         btnAddTarefa.style.display = 'none';
-        window.location.reload();
+
+        //mostra aviso de tarefa excluída com sucesso
+        aviso('Tarefa excluída com sucesso!','sucesso');
+
+        setTimeout(() => {
+            window.location.reload();
+        },2000);
     }else{
         //atualiza no localstorage
         bd.setTarefa(tarefaDiaSel,tarefas);
@@ -307,10 +315,13 @@ function confirmExclu(){
     areaConfirmExclu.style.display = 'none';
 
     overFlowVisible();
-    /*atualiza a pagina e consequentemente puxa a funcao de carregar tarefa novamente*/
+
+    //mostra aviso de tarefa excluída com sucesso
     aviso('Tarefa excluída com sucesso!','sucesso');
-    
+
+    /*atualiza a pagina e consequentemente puxa a funcao de carregar tarefa novamente*/
     carregarTarefas(tarefaDiaSel);
+    
 }
 
 /*funcao que fecha cnts de interacao*/
@@ -365,6 +376,7 @@ function aviso(texto,tipo){
     containerAviso.appendChild(textoAviso);
     document.body.appendChild(containerAviso);
 
+    //faz o aviso sumir apos 3 segundos
     setTimeout(() => {
         //adicioanndo classe fade out para animacao de saida
         containerAviso.classList.add('fade-out');
@@ -373,5 +385,5 @@ function aviso(texto,tipo){
         setTimeout(() => {
             document.body.removeChild(containerAviso);
         }, 500);
-    },3000);
+    },2000);
 }
