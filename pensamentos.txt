@@ -1,4 +1,5 @@
 enfrentando problemas com o github pages
 
-adicionando os avisos estilizaados
-pareemtros de texto e tipo como sucesso ou errro
+pegar o cont sem task e passar pro js e dar display flex dele mas reealizar as trocas de display de acordo com as interatividades
+
+renomear o index.html e fazer a troca dele em todos os arquivos
