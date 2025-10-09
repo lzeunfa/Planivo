@@ -1,14 +1,21 @@
 //area de adicionar task
-let areaAddTask = document.getElementById("areaAddTask");
+const areaAddTask = document.getElementById("areaAddTask");
 areaAddTask.style.display = "none";
 
 //area para renomear
-let areaRenomear = document.getElementById("areaRenomear");
+const areaRenomear = document.getElementById("areaRenomear");
 areaRenomear.style.display = 'none';
 
 //area para confirmar exclusão
-let areaConfirmExclu = document.getElementById("areaConfirmExclu");
+const areaConfirmExclu = document.getElementById("areaConfirmExclu");
 areaConfirmExclu.style.display = 'none';
+
+//definindo os containers de tarefas como variaveis
+const contSemTask = document.getElementById("contSemTask");
+contSemTask.style.display = 'none';
+
+const contComTask = document.getElementById("contComTask");
+contComTask.style.display = 'none';
 
 /*variavel externa para passar valores entre as funções
 apagar tarefas e confirmar exclusao*/
@@ -112,14 +119,16 @@ function aoCarregarDias(numDiaSem){
     }
 
     //verifica se no localstorage existe um item com o numero do dia da pagina
-    if(localStorage.getItem(numDiaSem)){
+    if(!localStorage.getItem(numDiaSem)){
+        /*adiciona o conteiner com conteudo sem task
+        caso nao exista tarefas no dia*/
+        contSemTask.style.display = "flex";
+    }else{
         //retira o conteiner com conteudo sem task
-        let areaContSemTask = document.getElementById('contSemTask');
-        areaContSemTask.style.display = "none";
+        contSemTask.style.display = "none";
 
         //faz aparecer o container com conteudo com task
-        let areaContComTask = document.getElementById('contComTask');
-        areaContComTask.style.display = "flex";
+        contComTask.style.display = "flex";
 
         let btnAddTarefa = document.getElementById("contBtnNovaTarefa");
         btnAddTarefa.style.display = 'flex';
@@ -248,12 +257,10 @@ function carregarTarefas(numDia){
     });
 
     //retira o conteiner com conteudo sem task
-    let areaContSemTask = document.getElementById('contSemTask');
-    areaContSemTask.style.display = "none";
+    contSemTask.style.display = "none";
 
     //faz aparecer o container com conteudo com task
-    let areaContComTask = document.getElementById('contComTask');
-    areaContComTask.style.display = "flex";
+    contComTask.style.display = "flex";
 
     //faz aparecer o btn de adicionar tarefa redondo
     let btnAddTarefa = document.getElementById("contBtnNovaTarefa");
@@ -302,7 +309,7 @@ function confirmExclu(){
     overFlowVisible();
     /*atualiza a pagina e consequentemente puxa a funcao de carregar tarefa novamente*/
     aviso('Tarefa excluída com sucesso!','sucesso');
-
+    
     carregarTarefas(tarefaDiaSel);
 }
 

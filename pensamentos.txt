@@ -3,3 +3,5 @@ enfrentando problemas com o github pages
 pegar o cont sem task e passar pro js e dar display flex dele mas reealizar as trocas de display de acordo com as interatividades
 
 renomear o index.html e fazer a troca dele em todos os arquivos
+
+ajustar aviso de exclusao quando nao tiver mais nenhuma tarefa
