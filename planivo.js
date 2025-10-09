@@ -79,7 +79,7 @@ function prosseguirLogin(){
     
     //verifica se o input do campo nome nao esta vazio
     if(nomeUser.trim() == ''){
-        alert('Preencha o campo nome para prosseguir!');
+        aviso('Preencha o campo nome para prosseguir!','erro');
     }else{//recebe no localstorage o nome informado no input
         localStorage.setItem('nomeUser', nomeUser);
         window.location.href = "/diashtml/segunda.html";
@@ -142,12 +142,20 @@ function confirmRename(){
 
     //verificacao se é um valor válido
     if(newName.trim() == ''){
-        alert('Preencha o campo novo nome com texto válido!');
+        aviso('Erro, informe um valor válido!','erro');
     }else{
         localStorage.setItem('nomeUser', newName);
 
         areaRenomear.style.display = 'none';
-        window.location.reload();
+
+        //mostra aviso de nome alterado com sucesso
+        aviso('Nome alterado com sucesso!','sucesso');
+
+        //pega o nome no localstorage e atualiza o header
+        let nome = localStorage.getItem('nomeUser');
+        let nomeHeader = document.getElementById('nomeUser');
+        nomeHeader.innerText = nome;
+            
     }
 }
 
@@ -158,16 +166,6 @@ function novaTarefa(){
     //sobe a pagina
     window.scrollTo(0,0);
     overFlowHidden();
-}
-
-/*funcao para esconder overflow evitando rolagem vertical*/
-function overFlowHidden(){
-    document.body.style.overflow = 'hidden';
-}
-
-//funcao para voltar a aparecer overflow evitando
-function overFlowVisible(){
-    document.body.style.overflow = 'visible';
 }
 
 //parametro numDia dias da semana de 1-7, comecando na segunda
@@ -186,13 +184,13 @@ function adicionarTarefa(numDia){
 
     //caso o horario inicial seja maior que o horario final, mostra erro no cadastro da tarefa
     if(horarioI.value>horarioF.value){
-        alert('Erro no cadastro da tarefa, informe um horário válido!');
+        aviso('Erro, informe um valor válido!','erro');
         return;
     }
     
     //mostra erro no cadastro de tarefas caso algum input não tenha sido preenchido
     if(!tarefa.validarDados()){
-        alert('Erro no cadastro da tarefa, confira os valores e tente novamente!');
+        aviso('Erro no cadastro, confira os campos!','erro');
         return;
     }
 
@@ -202,7 +200,8 @@ function adicionarTarefa(numDia){
     //faz fechar a area de adicionar tarefa
     areaAddTask.style.display = 'none';
 
-    alert('Tarefa cadastrada com sucesso!')
+    //mostra aviso de tarefa cadastrada com sucesso
+    aviso('Tarefa cadastrada!','sucesso');
 
     //esvazia os valores dos inputs
     horarioI.value = '';
@@ -302,6 +301,8 @@ function confirmExclu(){
 
     overFlowVisible();
     /*atualiza a pagina e consequentemente puxa a funcao de carregar tarefa novamente*/
+    aviso('Tarefa excluída com sucesso!','sucesso');
+
     carregarTarefas(tarefaDiaSel);
 }
 
@@ -315,4 +316,55 @@ function fecharArea(Area){
         areaConfirmExclu.style.display = 'none';
     }
     overFlowVisible();
+}
+
+//funcao para esconder overflow evitando rolagem vertical
+function overFlowHidden(){
+    document.body.style.overflow = 'hidden';
+}
+
+//funcao para voltar a aparecer overflow
+function overFlowVisible(){
+    document.body.style.overflow = 'visible';
+}
+
+//function para a criação de avisos estilizados
+function aviso(texto,tipo){
+    //criando o container do aviso
+    const containerAviso = document.createElement('div');
+    containerAviso.className = 'avisoTopo align-items-center justify-content-center';
+
+    //criando o img e o p do aviso
+    const imgAviso = document.createElement('img');
+    imgAviso.className = 'iconAviso';
+    const textoAviso = document.createElement('p');
+    textoAviso.className = 'textoAviso pt-3 text-center';
+
+    //verifica o tipo de aviso e altera o conteudo e estilo
+    if(tipo == 'sucesso'){
+        imgAviso.src = '/img/check.png';
+        textoAviso.innerText = texto;
+        containerAviso.style.backgroundColor = '#10B981';
+        containerAviso.style.display = 'flex';
+    }else if(tipo == 'erro'){
+        imgAviso.src = '/img/erro.png';
+        textoAviso.innerText = texto;
+        containerAviso.style.backgroundColor = '#EC2126';
+        
+        containerAviso.style.display = 'flex';
+    }
+
+    containerAviso.appendChild(imgAviso);
+    containerAviso.appendChild(textoAviso);
+    document.body.appendChild(containerAviso);
+
+    setTimeout(() => {
+        //adicioanndo classe fade out para animacao de saida
+        containerAviso.classList.add('fade-out');
+
+        //apos o tempo de animacao retira o elemento do dom
+        setTimeout(() => {
+            document.body.removeChild(containerAviso);
+        }, 500);
+    },3000);
 }
