@@ -265,7 +265,6 @@ function carregarTarefas(numDia){
     contComTask.style.display = "flex";
 
     //faz aparecer o btn de adicionar tarefa redondo
-    let btnAddTarefa = document.getElementById("contBtnNovaTarefa");
     btnAddTarefa.style.display = 'flex';
     
 }
@@ -299,7 +298,6 @@ function confirmExclu(){
     //verifica se o array ainda tem tarefas
     if(tarefas.length === 0){
         bd.remover(tarefaDiaSel);
-        let btnAddTarefa = document.getElementById("contBtnNovaTarefa");
         btnAddTarefa.style.display = 'none';
 
         //mostra aviso de tarefa excluída com sucesso
