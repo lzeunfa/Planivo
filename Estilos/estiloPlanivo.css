@@ -223,7 +223,7 @@ main h1{
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.477);
 }
 
-#contComTask{
+#contComTask, #conSemTask{
     display: none;
 }
 
@@ -329,3 +329,6 @@ a{
     font-size: 1.2rem;
 }
 /*fim area aviso topo*/
+
+/*classes de transição*/
+
