@@ -185,6 +185,8 @@ function confirmRename(){
         nomeHeader.innerText = nome;
             
     }
+
+    overFlowVisible();
 }
 
 //função para o btn que adiciona tarefa
@@ -364,7 +366,7 @@ function confirmExclu(){
     /*atualiza a pagina e consequentemente puxa a funcao de carregar tarefa novamente, garantindo que o navegador só redesenhe o DOM
     após todas as alterações estarem prontas*/
     requestAnimationFrame(()=>{
-        carregarTarefas(numDiaSem);
+        window.location.reload();
     });
     
 }
