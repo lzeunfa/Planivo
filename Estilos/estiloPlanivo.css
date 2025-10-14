@@ -204,7 +204,7 @@ main{
     margin-top: 30px;
     padding: 10px;
 
-    animation: opacidade 1.5s ease;
+    animation: opacidade 1s ease;
 }
 
 main h1{
@@ -221,10 +221,6 @@ main h1{
     width: 70%;
 
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.477);
-}
-
-#contComTask, #conSemTask{
-    display: none;
 }
 
 #btnAdicionarTarefa{
@@ -265,7 +261,18 @@ main h1{
 }
 
 #contBtnNovaTarefa{
-    display: none;
+    display: flex;
+}
+
+.visible{
+    opacity: 1;
+    pointer-events: all;
+}
+
+.invisible{
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
 }
 /*fim area main cronograma*/
 
