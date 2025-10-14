@@ -12,13 +12,17 @@ areaConfirmExclu.style.display = 'none';
 
 //definindo os containers de tarefas como variaveis
 const contSemTask = document.getElementById("contSemTask");
-contSemTask.style.display = 'none';
+contSemTask.classList.add('invisible');
+contSemTask.style.display= 'none';
 
 const contComTask = document.getElementById("contComTask");
-contComTask.style.display = 'none';
+contComTask.classList.add('invisible');
+contComTask.style.display= 'none';
 
 //definindo o btn de adicionar tarefa como variavel
 const btnAddTarefa = document.getElementById("contBtnNovaTarefa");
+btnAddTarefa.classList.add('invisible');
+btnAddTarefa.style.display = 'none';
 
 /*variavel externa para passar valores entre as funções
 apagar tarefas e confirmar exclusao*/
@@ -125,19 +129,31 @@ function aoCarregarDias(numDiaSem){
     if(!localStorage.getItem(numDiaSem)){
         /*adiciona o conteiner com conteudo sem task
         caso nao exista tarefas no dia*/
-        contSemTask.style.display = "flex";
+        contSemTask.classList.remove('invisible');
+        contSemTask.classList.add('visible');
+        contSemTask.style.display= 'flex';
     }else{
         //retira o conteiner com conteudo sem task
-        contSemTask.style.display = "none";
+        contSemTask.classList.add('invisible');
+        contSemTask.style.display= 'none';
 
         //faz aparecer o container com conteudo com task
-        contComTask.style.display = "flex";
+        contComTask.classList.remove('invisible');
+        contComTask.classList.add('visible');
+        contComTask.style.display= 'flex';
 
         //faz aparecer o btn de adicionar tarefa redondo
-        btnAddTarefa.style.display = 'flex';
+        btnAddTarefa.classList.remove('invisible');
+        btnAddTarefa.classList.add('visible');
+        btnAddTarefa.style.display= 'flex';
 
-        //chamando a função para criação do html das tarefas
-        carregarTarefas(numDiaSem);
+        /*atualizando a pagina garantindo 
+        que o navegador só redesenhe o DOM
+        após todas as alterações estarem prontas*/
+        requestAnimationFrame(()=>{
+            carregarTarefas(numDiaSem);
+
+        })
     }
 }
 
@@ -223,7 +239,12 @@ function adicionarTarefa(numDia){
 
     overFlowVisible();
 
-    carregarTarefas(numDia);
+    /*atualizando a pagina garantindo 
+    que o navegador só redesenhe o DOM
+    após todas as alterações estarem prontas*/
+    requestAnimationFrame(()=>{
+        carregarTarefas(numDiaSem);
+    });
 }
 
 //funcao para carregar as tarefas e mostrar elas no respectivo dia
@@ -232,40 +253,63 @@ function carregarTarefas(numDia){
     /*recebe o objeto com a determinada chave e se nao existir recebe um array*/
     let tarefas = bd.getTarefas(numDia);
 
-    //recebe o container que recebera as tarefas
-    let containerTasks = document.getElementById("contComTask");
     //limpa o container antes de renderizar
     contComTask.innerHTML = '';
 
-    //ordenando as tarefas por horario inicial
-    tarefas.sort((a,b) => a.horarioI.localeCompare(b.horarioI));
+    if(tarefas.length > 0){
+        //ordenando as tarefas por horario inicial
+        tarefas.sort((a,b) => a.horarioI.localeCompare(b.horarioI));
 
-    //percorrendo cada elemento do objeto e criando seu html
-    tarefas.forEach((tarefa,index) => {
-        let divTask = document.createElement("div");
-        divTask.className = 'cntTarefaAdicionada';
+        //percorrendo cada elemento do objeto e criando seu html
+        tarefas.forEach((tarefa,index) => {
+            let divTask = document.createElement("div");
+            divTask.className = 'cntTarefaAdicionada';
 
-        //html das tarefas
-        divTask.innerHTML = `
-        <div class="infosTarefa">
-            <p class="txtHorarios mb-1">${tarefa.horarioI} - ${tarefa.horarioF}</p>
-            <p class="txtNomeTarefa">${tarefa.nomeTarefa}</p>
-        </div>
+            //html das tarefas
+            divTask.innerHTML = `
+            <div class="infosTarefa">
+                <p class="txtHorarios mb-1">${tarefa.horarioI} - ${tarefa.horarioF}</p>
+                <p class="txtNomeTarefa">${tarefa.nomeTarefa}</p>
+            </div>
 
-        <img class="iconApagar align-self-center" src="/img/apagarIcon.png" alt="apagar-Icon" width="20px" height="20px" onclick="apagarTarefa(${numDia},${index})">
-        `;
+            <img class="iconApagar align-self-center" src="/img/apagarIcon.png" alt="apagar-Icon" width="20px" height="20px" onclick="apagarTarefa(${numDia},${index})">
+            `;
 
-        containerTasks.appendChild(divTask);
-    });
+            contComTask.appendChild(divTask);
+        });
 
-    //retira o conteiner com conteudo sem task
-    contSemTask.style.display = "none";
+        //retira o conteiner com conteudo sem task
+        contSemTask.classList.remove('visible');
+        contSemTask.classList.add('invisible');
+        contSemTask.style.display= 'none';
 
-    //faz aparecer o container com conteudo com task
-    contComTask.style.display = "flex";
+        //faz aparecer o container com conteudo com task
+        contComTask.classList.remove('invisible');
+        contComTask.classList.add('visible');
+        contComTask.style.display= 'flex';
 
-    //faz aparecer o btn de adicionar tarefa redondo
-    btnAddTarefa.style.display = 'flex';
+        //faz aparecer o btn de adicionar tarefa redondo
+        btnAddTarefa.classList.remove('invisible');
+        btnAddTarefa.classList.add('visible');
+        btnAddTarefa.style.display= 'flex';
+    }else{
+        //reaparece o conteiner com conteudo sem task
+        contSemTask.classList.remove('invisible');
+        contSemTask.classList.add('visible');
+        contSemTask.style.display= 'flex';
+
+        //faz sumir o container com conteudo com task
+        contComTask.classList.remove('visible');
+        contComTask.classList.add('invisible');
+        contComTask.style.display= 'none';
+
+        //faz sumir o btn de adicionar tarefa redondo
+        btnAddTarefa.classList.remove('visible');
+        btnAddTarefa.classList.add('invisible');
+        btnAddTarefa.style.display= 'none';
+    }
+
+    
     
 }
 
@@ -298,14 +342,14 @@ function confirmExclu(){
     //verifica se o array ainda tem tarefas
     if(tarefas.length === 0){
         bd.remover(tarefaDiaSel);
+        btnAddTarefa.classList.remove('visible');
+        btnAddTarefa.classList.add('invisible');
         btnAddTarefa.style.display = 'none';
 
         //mostra aviso de tarefa excluída com sucesso
         aviso('Tarefa excluída com sucesso!','sucesso');
 
-        setTimeout(() => {
-            window.location.reload();
-        },2000);
+        carregarTarefas(tarefaDiaSel);
     }else{
         //atualiza no localstorage
         bd.setTarefa(tarefaDiaSel,tarefas);
@@ -317,8 +361,11 @@ function confirmExclu(){
     //mostra aviso de tarefa excluída com sucesso
     aviso('Tarefa excluída com sucesso!','sucesso');
 
-    /*atualiza a pagina e consequentemente puxa a funcao de carregar tarefa novamente*/
-    carregarTarefas(tarefaDiaSel);
+    /*atualiza a pagina e consequentemente puxa a funcao de carregar tarefa novamente, garantindo que o navegador só redesenhe o DOM
+    após todas as alterações estarem prontas*/
+    requestAnimationFrame(()=>{
+        carregarTarefas(numDiaSem);
+    });
     
 }
 
