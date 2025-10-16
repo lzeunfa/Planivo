@@ -115,7 +115,7 @@ function aoCarregarDias(numDiaSem){
 
     //realizando a verificacao
     if(!nome){
-        window.location.href = '/../index.html'
+        window.location.href = '/../login.html'
         localStorage.clear();
         return;
     }
