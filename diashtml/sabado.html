@@ -6,13 +6,13 @@
     <title>Planivo</title>
 
     <!--Favicon-->
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
 
     <!--BOOTSTRAP-->
-    <link rel="stylesheet" href="/bootstrap-4.6.2-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../bootstrap-4.6.2-dist/css/bootstrap.min.css">
 
     <!--CSS-->
-    <link rel="stylesheet" href="/Estilos/estiloPlanivo.css">
+    <link rel="stylesheet" href="../Estilos/estiloPlanivo.css">
 </head>
 <body id="bodySab" onload="aoCarregarDias(6)">
 
@@ -27,7 +27,7 @@
             <!--header do container de renomear-->
             <div id="tituloRenomear" class="d-flex flex-column mb-4">
                 <p class="p-2">Renomear:</p>
-                <img class="align-self-end mt-2 mr-2 iconFechar" src="/img/iconFechar.png" alt="fechar" width="28px" onclick="fecharArea(0)">
+                <img class="align-self-end mt-2 mr-2 iconFechar" src="../img/iconFechar.png" alt="fechar" width="28px" onclick="fecharArea(0)">
             </div>
 
             <div id="cntConteudoRnm" class="d-flex flex-column align-items-center">
@@ -49,10 +49,10 @@
             <div id="cntNovaTask" class="p-3 d-flex flex-column">
 
                 <!--icone de fechar area-->
-                <img class="align-self-end mt-2 iconFechar" src="/img/iconFechar.png" alt="fechar" width="30px" onclick="fecharArea(1)">
+                <img class="align-self-end mt-2 iconFechar" src="../img/iconFechar.png" alt="fechar" width="30px" onclick="fecharArea(1)">
 
                 <!--logo-->
-                <img src="/img/LogoPlanivo.png" alt="logo" width="120px">
+                <img src="../img/LogoPlanivo.png" alt="logo" width="120px">
                 <p id="pAddTask">Adicionando <br> nova tarefa</p>
 
                 <!--area formulario-->
@@ -85,10 +85,10 @@
 
             <!--header do container de confirmacao de exclusao-->
             <div id="headerConfirmExclu" class="d-flex align-items-center justify-content-between">
-                <img src="/img/LogoPlanivo.png" alt="logo-planivo" width="120px" class="m-2">
+                <img src="../img/LogoPlanivo.png" alt="logo-planivo" width="120px" class="m-2">
 
                 <!--icone de fechar area-->
-                <img class="mr-2 mt-1" src="/img/iconFechar.png" alt="fechar" width="30px" onclick="fecharArea(2)">
+                <img class="mr-2 mt-1" src="../img/iconFechar.png" alt="fechar" width="30px" onclick="fecharArea(2)">
             </div>
 
             <div id="cntContconfirmExclu" class="d-flex flex-column align-items-center">
@@ -111,14 +111,14 @@
     <header class="d-flex flex-column align-items-center">
 
         <!--img logo-->
-        <img class="mt-2" src="/img/LogoPlanivo.png" alt="logo" width="125px">
+        <img class="mt-2" src="../img/LogoPlanivo.png" alt="logo" width="125px">
 
         <!--conteiner para o nome do usuario-->
         <div id="containerNome" class="d-flex align-items-center">
             <p id="pUser">Olá, <span id="nomeUser">.</span></p>
 
             <!--icone para renomear-->
-            <img class="ml-1 mb-3" src="/img/renomear.png" alt="renomear-icon" width="24px" height="23px" onclick="renomear()">
+            <img class="ml-1 mb-3" src="../img/renomear.png" alt="renomear-icon" width="24px" height="23px" onclick="renomear()">
 
         </div>
 
@@ -154,23 +154,8 @@
             <button id="comPlan" class="p-2 align-self-center mt-4" onclick="novaTarefa()">Começar a planejar!</button>
         </div>
 
-        <!--conteudo que aparecera quando tiver tarefas adicionadas no dia-->
+        <!--div que aparecera quando tiver tarefas adicionadas no dia-->
         <div id="contComTask" class="flex-column">
-
-            <!--cnt da tarefa adicionada-->
-            <div class="cntTarefaAdicionada">
-
-                <!--div com as informacoes da tarefa-->
-                <div class="infosTarefa">
-                    <p class="txtHorarios mb-1">Horario I - Horario F</p>
-                    <p class="txtNomeTarefa">Nome da tarefa</p>
-                </div>
-
-                <!--icone de lixeira para apagar a tarefa-->
-                <img class="iconApagar align-self-center" src="/img/apagarIcon.png" alt="apagar-Icon" width="20px" height="20px" onclick="apagarTarefa()">
-
-            </div>
-
         </div>
 
         <div id="contBtnNovaTarefa" class="justify-content-end">
@@ -190,6 +175,6 @@
     </footer>
     <!--fim area footer-->
 
-    <script src="/planivo.js"></script>
+    <script src="../planivo.js"></script>
 </body>
 </html>
