@@ -1,3 +1,24 @@
+1- adicionar area para colocar descrição da tarefa(area opcional){
+    adicionar input text  na area de adicinar tarefa{
+        label, name e id
+    }
+
+    estilizar como ficaria o texto da descricao no container da tarefa
+
+    no js:
+    alteracao no class da Tarefa() para o constructor receber também descricao
+
+    descobrir como aparece o i in this na verificação de dados para verificar
+    a descricao de forma opcional
+
+    na func adicionaTarefa:
+    variavel recebendo o input da descricao
+    adicionar a descricao no objeto criado
+}
+
+
+
+
 realizar modificação de tarefa com horário inicial maior que o final{
 se for maior,  pegar a tarefa no local storage e passar pro dia sem + 1 e criar a atividade no próximo dia também
 }
