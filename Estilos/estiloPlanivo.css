@@ -60,6 +60,8 @@ body{
     animation: opacidade 0.5s ease;
 
     display: none;
+
+    z-index: 100;
 }
 
 #headerConfirmExclu{
@@ -260,20 +262,36 @@ main h1{
     color: var(--txtEspec);
 }
 
-#contBtnNovaTarefa{
-    display: flex;
+/* Prevenir flicker inicial - elementos começam ocultos */
+#contSemTask,
+#contComTask,
+#contBtnNovaTarefa {
+    opacity: 0;
+    display: none;
 }
 
-.visible{
+/* Quando ficam visíveis, aplicar animação suave */
+#contSemTask.visible,
+#contComTask.visible,
+#contBtnNovaTarefa.visible {
     opacity: 1;
+    animation: opacidade 0.3s ease forwards;
+}
+
+/* Garantir que elementos invisíveis não ocupem espaço */
+.invisible {
+    opacity: 0 !important;
+    pointer-events: none;
+    display: none !important;
+}
+
+/* Elementos visíveis */
+.visible {
+    opacity: 1 !important;
     pointer-events: all;
 }
 
-.invisible{
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    pointer-events: none;
-}
+
 /*fim area main cronograma*/
 
 /*inicio area footer*/

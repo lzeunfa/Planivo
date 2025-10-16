@@ -12,16 +12,13 @@ areaConfirmExclu.style.display = 'none';
 
 //definindo os containers de tarefas como variaveis
 const contSemTask = document.getElementById("contSemTask");
-contSemTask.classList.add('invisible');
-contSemTask.style.display= 'none';
-
 const contComTask = document.getElementById("contComTask");
-contComTask.classList.add('invisible');
-contComTask.style.display= 'none';
-
-//definindo o btn de adicionar tarefa como variavel
 const btnAddTarefa = document.getElementById("contBtnNovaTarefa");
-btnAddTarefa.classList.add('invisible');
+
+//escondi tudo inicialmente no css para eviter os flickers
+//inicializando com estado oculto
+contSemTask.style.display = 'none';
+contComTask.style.display = 'none';
 btnAddTarefa.style.display = 'none';
 
 /*variavel externa para passar valores entre as funções
@@ -117,43 +114,49 @@ function aoCarregarDias(numDiaSem){
     let nome = localStorage.getItem('nomeUser');
 
     //realizando a verificacao
-    if(!nome){//se nome for string vazia ou algo do tipo retorna false mas com negacao torna true e executa o bloco de codigo
+    if(!nome){
         window.location.href = '/../index.html'
         localStorage.clear();
-    }else{//recebe o nome do localstorage e passa para o span no header da pagina html
-        let nomeHeader = document.getElementById('nomeUser');
-        nomeHeader.innerHTML = nome;
+        return;
     }
+    
+    //atualizando o nome no header
+    let nomeHeader = document.getElementById('nomeUser');
+    nomeHeader.innerText = nome;
 
-    //verifica se no localstorage existe um item com o numero do dia da pagina
-    if(!localStorage.getItem(numDiaSem)){
-        /*adiciona o conteiner com conteudo sem task
-        caso nao exista tarefas no dia*/
-        contSemTask.classList.remove('invisible');
+    let tarefas = bd.getTarefas(numDiaSem);
+    
+    //verificando se existem tarefas para este dia
+    if(tarefas.length === 0){
+        //sem tarefas mostra o contSemTask
+        contSemTask.style.display = 'flex';
+        contComTask.style.display = 'none';
+        btnAddTarefa.style.display = 'none';
+        
+        //força o navegador a aplicar as mudanças antes de adicionar animação
+        contSemTask.offsetHeight; // forçando reflow
+        
         contSemTask.classList.add('visible');
-        contSemTask.style.display= 'flex';
-    }else{
-        //retira o conteiner com conteudo sem task
-        contSemTask.classList.add('invisible');
-        contSemTask.style.display= 'none';
-
-        //faz aparecer o container com conteudo com task
-        contComTask.classList.remove('invisible');
+        contSemTask.classList.remove('invisible');
+    } else {
+        //com tarefas prepara e renderiza
+        //primeiro renderiza o conteúdo enquanto ainda está oculto
+        renderizarTarefas(numDiaSem, tarefas);
+        
+        //depois mostra tudo de uma vez
+        contComTask.style.display = 'flex';
+        btnAddTarefa.style.display = 'flex';
+        contSemTask.style.display = 'none';
+        
+        //força reflow antes de adicionar animação
+        contComTask.offsetHeight;
+        
         contComTask.classList.add('visible');
-        contComTask.style.display= 'flex';
-
-        //faz aparecer o btn de adicionar tarefa redondo
-        btnAddTarefa.classList.remove('invisible');
+        contComTask.classList.remove('invisible');
         btnAddTarefa.classList.add('visible');
-        btnAddTarefa.style.display= 'flex';
-
-        /*atualizando a pagina garantindo 
-        que o navegador só redesenhe o DOM
-        após todas as alterações estarem prontas*/
-        requestAnimationFrame(()=>{
-            carregarTarefas(numDiaSem);
-
-        })
+        btnAddTarefa.classList.remove('invisible');
+        contSemTask.classList.remove('visible');
+        contSemTask.classList.add('invisible');
     }
 }
 
@@ -241,81 +244,76 @@ function adicionarTarefa(numDia){
 
     overFlowVisible();
 
-    /*atualizando a pagina garantindo 
-    que o navegador só redesenhe o DOM
-    após todas as alterações estarem prontas*/
-    requestAnimationFrame(()=>{
-        carregarTarefas(numDiaSem);
+    // Atualizar as tarefas sem flicker
+    carregarTarefas(numDiaSem);
+}
+
+//função para renderizar tarefas
+function renderizarTarefas(numDia, tarefas){
+    //ordenando as tarefas por horario inicial
+    tarefas.sort((a,b) => a.horarioI.localeCompare(b.horarioI));
+
+    //cria todo o HTML de uma vez usando um fragmento
+    const fragment = document.createDocumentFragment();
+
+    //percorrendo cada elemento do objeto e criando seu html
+    tarefas.forEach((tarefa,index) => {
+        let divTask = document.createElement("div");
+        divTask.className = 'cntTarefaAdicionada';
+
+        //html das tarefas
+        divTask.innerHTML = `
+        <div class="infosTarefa">
+            <p class="txtHorarios mb-1">${tarefa.horarioI} - ${tarefa.horarioF}</p>
+            <p class="txtNomeTarefa">${tarefa.nomeTarefa}</p>
+        </div>
+
+        <img class="iconApagar align-self-center" src="/img/apagarIcon.png" alt="apagar-Icon" width="20px" height="20px" onclick="apagarTarefa(${numDia},${index})">
+        `;
+
+        fragment.appendChild(divTask);
     });
+
+    //limpa e adiciona tudo de uma vez
+    contComTask.innerHTML = '';
+    contComTask.appendChild(fragment);
 }
 
 //funcao para carregar as tarefas e mostrar elas no respectivo dia
 function carregarTarefas(numDia){
-
-    /*recebe o objeto com a determinada chave e se nao existir recebe um array*/
     let tarefas = bd.getTarefas(numDia);
 
-    //limpa o container antes de renderizar
-    contComTask.innerHTML = '';
-
     if(tarefas.length > 0){
-        //ordenando as tarefas por horario inicial
-        tarefas.sort((a,b) => a.horarioI.localeCompare(b.horarioI));
+        //renderiza as tarefas
+        renderizarTarefas(numDia, tarefas);
 
-        //percorrendo cada elemento do objeto e criando seu html
-        tarefas.forEach((tarefa,index) => {
-            let divTask = document.createElement("div");
-            divTask.className = 'cntTarefaAdicionada';
-
-            //html das tarefas
-            divTask.innerHTML = `
-            <div class="infosTarefa">
-                <p class="txtHorarios mb-1">${tarefa.horarioI} - ${tarefa.horarioF}</p>
-                <p class="txtNomeTarefa">${tarefa.nomeTarefa}</p>
-            </div>
-
-            <img class="iconApagar align-self-center" src="/img/apagarIcon.png" alt="apagar-Icon" width="20px" height="20px" onclick="apagarTarefa(${numDia},${index})">
-            `;
-
-            contComTask.appendChild(divTask);
-        });
-
-        //retira o conteiner com conteudo sem task
+        //atualiza a visibilidade dos containers
+        contSemTask.style.display = 'none';
+        contComTask.style.display = 'flex';
+        btnAddTarefa.style.display = 'flex';
+        
         contSemTask.classList.remove('visible');
         contSemTask.classList.add('invisible');
-        contSemTask.style.display= 'none';
-
-        //faz aparecer o container com conteudo com task
         contComTask.classList.remove('invisible');
         contComTask.classList.add('visible');
-        contComTask.style.display= 'flex';
-
-        //faz aparecer o btn de adicionar tarefa redondo
         btnAddTarefa.classList.remove('invisible');
         btnAddTarefa.classList.add('visible');
-        btnAddTarefa.style.display= 'flex';
     }else{
-        //reaparece o conteiner com conteudo sem task
-        contSemTask.classList.remove('invisible');
-        contSemTask.classList.add('visible');
-        contSemTask.style.display= 'flex';
-
-        //faz sumir o container com conteudo com task
+        //atualiza a visibilidade para estado sem tarefas
+        contComTask.style.display = 'none';
+        btnAddTarefa.style.display = 'none';
+        contSemTask.style.display = 'flex';
+        
         contComTask.classList.remove('visible');
         contComTask.classList.add('invisible');
-        contComTask.style.display= 'none';
-
-        //faz sumir o btn de adicionar tarefa redondo
         btnAddTarefa.classList.remove('visible');
         btnAddTarefa.classList.add('invisible');
-        btnAddTarefa.style.display= 'none';
+        contSemTask.classList.remove('invisible');
+        contSemTask.classList.add('visible');
     }
-
-    
-    
 }
 
-//funcao para apagar tarefa clicando no incoe de lixeira
+//funcao para apagar tarefa clicando no icone de lixeira
 function apagarTarefa(diaSem,index){
     areaConfirmExclu.style.display = 'flex';
 
@@ -328,7 +326,6 @@ function apagarTarefa(diaSem,index){
 
     overFlowHidden();
 }
-
 
 //confirmacao de exclusao de tarefa
 function confirmExclu(){
@@ -344,31 +341,19 @@ function confirmExclu(){
     //verifica se o array ainda tem tarefas
     if(tarefas.length === 0){
         bd.remover(tarefaDiaSel);
-        btnAddTarefa.classList.remove('visible');
-        btnAddTarefa.classList.add('invisible');
-        btnAddTarefa.style.display = 'none';
-
-        //mostra aviso de tarefa excluída com sucesso
-        aviso('Tarefa excluída com sucesso!','sucesso');
-
-        carregarTarefas(tarefaDiaSel);
     }else{
         //atualiza no localstorage
         bd.setTarefa(tarefaDiaSel,tarefas);
     }
+    
     areaConfirmExclu.style.display = 'none';
-
     overFlowVisible();
 
     //mostra aviso de tarefa excluída com sucesso
     aviso('Tarefa excluída com sucesso!','sucesso');
 
-    /*atualiza a pagina e consequentemente puxa a funcao de carregar tarefa novamente, garantindo que o navegador só redesenhe o DOM
-    após todas as alterações estarem prontas*/
-    requestAnimationFrame(()=>{
-        carregarTarefas(tarefaDiaSel);
-    });
-    
+    //atualiza a visualização
+    carregarTarefas(tarefaDiaSel);
 }
 
 /*funcao que fecha cnts de interacao*/
