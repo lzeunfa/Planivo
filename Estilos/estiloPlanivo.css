@@ -9,10 +9,19 @@
 /*animacao de entrada para ser mais suave*/
 @keyframes  opacidade{
     0%{
-        opacity: 0.3;
+        
     }
     100%{
-        opacity: 1;
+        
+    }
+}
+
+@keyframes escadinha{
+    0%{
+        transform: translateY(20px);
+    }
+    100%{
+        
     }
 }
 
@@ -256,6 +265,9 @@ main h1{
     height: 70px;
 
     margin-bottom: 20px;
+
+    animation: escadinha 1s;
+
 }
 
 .txtHorarios{
