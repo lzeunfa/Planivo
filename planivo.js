@@ -366,7 +366,7 @@ function confirmExclu(){
     /*atualiza a pagina e consequentemente puxa a funcao de carregar tarefa novamente, garantindo que o navegador só redesenhe o DOM
     após todas as alterações estarem prontas*/
     requestAnimationFrame(()=>{
-        window.location.reload();
+        carregarTarefas(tarefaDiaSel);
     });
     
 }

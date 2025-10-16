@@ -3,8 +3,6 @@ enfrentando problemas com o github pages
 reajustar flickers(solução no gpt e ir alterando){
     problemas:
         uso de innerHTML + appendChild
-        alterações repetidas de display
-        recarregamento total da página com window.location.reload
 }
 
 renomear o index.html e fazer a troca dele em todos os arquivos
