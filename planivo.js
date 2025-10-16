@@ -268,7 +268,7 @@ function renderizarTarefas(numDia, tarefas){
             <p class="txtNomeTarefa">${tarefa.nomeTarefa}</p>
         </div>
 
-        <img class="iconApagar align-self-center" src="/img/apagarIcon.png" alt="apagar-Icon" width="20px" height="20px" onclick="apagarTarefa(${numDia},${index})">
+        <img class="iconApagar align-self-center" src="../img/apagarIcon.png" alt="apagar-Icon" width="20px" height="20px" onclick="apagarTarefa(${numDia},${index})">
         `;
 
         fragment.appendChild(divTask);
