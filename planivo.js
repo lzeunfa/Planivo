@@ -93,7 +93,7 @@ function prosseguirLogin(){
         aviso('Preencha o campo nome para prosseguir!','erro');
     }else{//recebe no localstorage o nome informado no input
         localStorage.setItem('nomeUser', nomeUser);
-        window.location.href = "/diashtml/segunda.html";
+        window.location.href = "./diashtml/segunda.html";
     }
 }
 
@@ -103,8 +103,8 @@ function aoCarregarLogin(){
     let nome = localStorage.getItem('nomeUser');
 
     /*se no localStorage ja existir o nomeUser, ele nao deixa entrar na area de login*/
-    if(!nome){
-        window.location.href = '/diashtml/segunda.html';
+    if(nome){
+        window.location.href = './diashtml/segunda.html';
     }
 }
 
@@ -115,7 +115,7 @@ function aoCarregarDias(numDiaSem){
 
     //realizando a verificacao
     if(!nome){
-        window.location.href = '/../login.html'
+        window.location.href = '../login.html'
         localStorage.clear();
         return;
     }
@@ -392,12 +392,12 @@ function aviso(texto,tipo){
 
     //verifica o tipo de aviso e altera o conteudo e estilo
     if(tipo == 'sucesso'){
-        imgAviso.src = '/img/check.png';
+        imgAviso.src = '../img/check.png';
         textoAviso.innerText = texto;
         containerAviso.style.backgroundColor = '#10B981';
         containerAviso.style.display = 'flex';
     }else if(tipo == 'erro'){
-        imgAviso.src = '/img/erro.png';
+        imgAviso.src = '../img/erro.png';
         textoAviso.innerText = texto;
         containerAviso.style.backgroundColor = '#EC2126';
         
