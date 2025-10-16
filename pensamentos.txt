@@ -16,7 +16,7 @@
     adicionar a descricao no objeto criado
 }
 
-
+(opcao para editar a tarefa, funcao para sair junto com funcao de renomear em um settings)
 
 
 realizar modificação de tarefa com horário inicial maior que o final{
