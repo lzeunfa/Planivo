@@ -103,7 +103,7 @@ function aoCarregarLogin(){
     let nome = localStorage.getItem('nomeUser');
 
     /*se no localStorage ja existir o nomeUser, ele nao deixa entrar na area de login*/
-    if(nome){
+    if(!nome){
         window.location.href = '/diashtml/segunda.html';
     }
 }
