@@ -16,7 +16,7 @@
     }
 }
 
-@keyframes escadinha{
+@keyframes desliza{
     0%{
         transform: translateY(20px);
     }
@@ -266,7 +266,7 @@ main h1{
 
     margin-bottom: 20px;
 
-    animation: escadinha 1s;
+    animation: desliza 1s;
 
 }
 
