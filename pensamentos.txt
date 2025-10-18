@@ -1,3 +1,4 @@
+*lembrar dos avisos pras ações
 1- adicionar area para colocar descrição da tarefa(area opcional){
     adicionar input text  na area de adicinar tarefa{
         label, name e id
@@ -47,3 +48,4 @@
 4- realizar modificação de tarefa com horário inicial maior que o final{
 se for maior,  pegar a tarefa no local storage e passar pro dia sem + 1 e criar a atividade no próximo dia também
 }
+
