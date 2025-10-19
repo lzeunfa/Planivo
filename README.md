@@ -85,4 +85,4 @@ e com btn de confirmar na cor vermelha.
 - Classes e Ids de fácil interpretação;<br>
 - Código limpo;<br>
 - Utilizar recursos ES6 OO;<br>
-[acessar](https://lzeunfa.github.io/Planivo/)
+[acessar](https://lzeunfa.github.io/Planivo/login.html)
