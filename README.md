@@ -3,7 +3,7 @@
 * Nome do projeto: Planivo (Planejamento + objetivo).<br>
 * Desenvolvedor: Eliseu Nóbrega.<br>
 * Propósito:<br>
-Propor ao usuário uma aplicação web simples e funcional para <br> organizar sua semana a fim de que alcance seus objetivos.<br>
+Propor ao usuário uma aplicação web simples e funcional para <br> organizar sua semana com tarefas de um único dia da semana <br> a fim de que alcance seus objetivos.<br>
 * Status: Em andamento.
 
 ***
