@@ -422,12 +422,20 @@ function aviso(texto,tipo){
 
     //verifica o tipo de aviso e altera o conteudo e estilo
     if(tipo == 'sucesso'){
+        if(window.location.href.includes('login.html')){
+            imgAviso.src = './img/check.png';
+        }else{
         imgAviso.src = '../img/check.png';
+        }
         textoAviso.innerText = texto;
         containerAviso.style.backgroundColor = '#10B981';
         containerAviso.style.display = 'flex';
     }else if(tipo == 'erro'){
+        if(window.location.href.includes('login.html')){
+            imgAviso.src = './img/erro.png';
+        }else{
         imgAviso.src = '../img/erro.png';
+        }
         textoAviso.innerText = texto;
         containerAviso.style.backgroundColor = '#EC2126';
         
