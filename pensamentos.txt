@@ -1,6 +1,7 @@
 *lembrar dos avisos pras ações
 
 {
+    melhorar estilo do settings
     confirmação de reiniciar
 }
 
