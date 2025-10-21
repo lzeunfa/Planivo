@@ -10,6 +10,10 @@ areaRenomear.style.display = 'none';
 const areaConfirmExclu = document.getElementById("areaConfirmExclu");
 areaConfirmExclu.style.display = 'none';
 
+//area para as settings
+const areaSettings = document.getElementById('areaSettings');
+areaSettings.style.display = 'none';
+
 //definindo os containers de tarefas como variaveis
 const contSemTask = document.getElementById("contSemTask");
 const contComTask = document.getElementById("contComTask");
@@ -158,6 +162,20 @@ function aoCarregarDias(numDiaSem){
         contSemTask.classList.remove('visible');
         contSemTask.classList.add('invisible');
     }
+}
+
+//funcao de settings para poder sair ou renomear
+function abrirSettings(){
+    areaSettings.style.display = 'flex';
+    overFlowHidden();
+}
+
+//funcao para deslogar
+function reiniciar(){
+    areaSettings.style.display = 'none';
+    overFlowVisible();
+    window.location.href = '../login.html'
+    localStorage.clear();
 }
 
 //funcao onclick no simbolo de renomear para abrir tela de renomeacao
@@ -358,12 +376,14 @@ function confirmExclu(){
 
 /*funcao que fecha cnts de interacao*/
 function fecharArea(Area){
-    if(Area == 1){
-        areaAddTask.style.display = "none";
-    }else if(Area == 0){
+    if(Area == 0){
         areaRenomear.style.display = 'none';
-    }else{
+    }else if(Area == 1){
+        areaAddTask.style.display = "none";
+    }else if (Area == 2){
         areaConfirmExclu.style.display = 'none';
+    }else{
+        areaSettings.style.display = 'none';
     }
     overFlowVisible();
 }
