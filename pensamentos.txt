@@ -1,5 +1,19 @@
 *lembrar dos avisos pras ações
-1- adicionar area para colocar descrição da tarefa(area opcional){
+1- Funçao para sair como settings{
+    remover icone de renomear para utilizar como icone de editar tarefa
+
+    adicionar icone de settings para clique no topo da aplicação
+
+    onclick no icone que abrirá uma área com textos:
+    renomear
+    sair
+
+    renomear vai executar a função renomear já criada
+
+    sair vai executar uma função que enviará o usuário para o login.html e apagar todos dados do localstorage
+}
+
+2- adicionar area para colocar descrição da tarefa(area opcional){
     adicionar input text  na area de adicinar tarefa{
         label, name e id
     }
@@ -17,19 +31,6 @@
     adicionar a descricao no objeto criado
 }
 
-2- Funçao para sair como settings{
-    remover icone de renomear para utilizar como icone de editar tarefa
-
-    adicionar icone de settings para clique no topo da aplicação
-
-    onclick no icone que abrirá uma área com textos:
-    renomear
-    sair
-
-    renomear vai executar a função renomear já criada
-
-    sair vai executar uma função que enviará o usuário para o login.html e apagar todos dados do localstorage
-}
 
 3- Opção para editar tarefa{
     utilizar o icone do renomear
