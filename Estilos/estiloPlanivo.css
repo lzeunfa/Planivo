@@ -146,7 +146,7 @@ body{
 }
 
 /*area dos inputs das infos da tarefa*/
-#nomeTarefa, #hInicio, #hFim{
+#nomeTarefa, #hInicio, #hFim, #descriTarefa{
     border: none;
     border-radius: 10px;
 
@@ -286,12 +286,38 @@ main h1{
     padding: 10px;
     border-radius: 20px;
 
-    height: 70px;
+    min-height: 70px;
 
     margin-bottom: 20px;
 
     animation: desliza 1s;
 
+}
+
+.infosTarefa{
+    min-height: 50px;
+
+    margin-bottom: 1px;
+
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.txtDescriTarefa{
+    padding: 0;
+    margin: 0;
+
+    font-size: 0.9rem;
+
+    color: var(--navDias);
+
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.txtNomeTarefa{
+    padding: 0px;
+    margin: 0px;
 }
 
 .txtHorarios{
@@ -358,7 +384,7 @@ a{
 
     width: 62%;
     min-height: 40px;
-    max-height: 55px;
+    max-height: 80px;
 
     position: fixed;
     top: 0;
