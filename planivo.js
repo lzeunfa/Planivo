@@ -34,9 +34,10 @@ let tarefaIndexSel = null;
 //modelo das tarefas
 class Tarefa{
 
-    constructor(horarioI,nomeTarefa,horarioF,diaSem){
+    constructor(horarioI,nomeTarefa,descriTarefa,horarioF,diaSem){
         this.horarioI = horarioI;
         this.nomeTarefa = nomeTarefa;
+        this.descriTarefa = descriTarefa;
         this.horarioF = horarioF;
         this.diaSem = diaSem;
     }
@@ -46,7 +47,11 @@ class Tarefa{
     validarDados(){
 
         for(let i in this){
-            if(this[i] == undefined || this[i] == '' || this[i] == null){
+            console.log(i);
+
+            if(this[i] == this.descriTarefa){
+                return true;
+            }else if(this[i] == undefined || this[i] == '' || this[i] == null){
                 return false;
             }
         }
@@ -224,18 +229,19 @@ function adicionarTarefa(numDia){
     //recebendo os inputs da area de novatarefa
     let horarioI = document.getElementById('hInicio');
     let nomeTarefa = document.getElementById('nomeTarefa');
+    let descriTarefa = document.getElementById('descriTarefa');
     let horarioF = document.getElementById('hFim');
     let numDiaSem = numDia;
 
     //criando nova tarefa
     let tarefa = new Tarefa(
-        horarioI.value,nomeTarefa.value,
+        horarioI.value,nomeTarefa.value,descriTarefa.value,
         horarioF.value,numDiaSem
     );
 
     //caso o horario inicial seja maior que o horario final, mostra erro no cadastro da tarefa
     if(horarioI.value>horarioF.value){
-        aviso('Erro, informe um valor válido!','erro');
+        aviso('Horário de término deve ser no mesmo dia!','erro');
         return;
     }
     
@@ -257,6 +263,7 @@ function adicionarTarefa(numDia){
     //esvazia os valores dos inputs
     horarioI.value = '';
     nomeTarefa.value = '';
+    descriTarefa.value = '';
     horarioF.value = '';
     numDiaSem.value = '';
 
@@ -284,6 +291,7 @@ function renderizarTarefas(numDia, tarefas){
         <div class="infosTarefa">
             <p class="txtHorarios mb-1">${tarefa.horarioI} - ${tarefa.horarioF}</p>
             <p class="txtNomeTarefa">${tarefa.nomeTarefa}</p>
+            <p class="txtDescriTarefa">${tarefa.descriTarefa}</p>
         </div>
 
         <img class="iconApagar align-self-center" src="../img/apagarIcon.png" alt="apagar-Icon" width="20px" height="20px" onclick="apagarTarefa(${numDia},${index})">
