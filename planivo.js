@@ -45,10 +45,10 @@ class Tarefa{
     //método para validação dos dados
     //verifica se os inputs obrigatorios estão preenchidos
     validarDados(){
-        const camposObrigatorios = ['horarioI','nomeTarefa','horarioF','diaSem']
-
-        for(let campos in camposObrigatorios){
-            if(this[campos] == undefined || this[campos] == '' || this[campos] == null){
+        const camposObrigatorios = ['horarioI', 'nomeTarefa', 'horarioF', 'diaSem'];
+        
+        for(let campo of camposObrigatorios){
+            if(this[campo] == undefined || this[campo] == '' || this[campo] == null){
                 return false;
             }
         }
