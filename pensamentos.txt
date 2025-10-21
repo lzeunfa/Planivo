@@ -1,7 +1,7 @@
 *lembrar dos avisos pras ações
 
 {
-    resolver undefine que aparece quando não tem descricao
+    confirmação de reiniciar
 }
 
 3- Opção para editar tarefa{
