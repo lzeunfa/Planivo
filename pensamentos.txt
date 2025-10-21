@@ -1,5 +1,9 @@
 *lembrar dos avisos pras ações
 
+{
+    resolver undefine que aparece quando não tem descricao
+}
+
 3- Opção para editar tarefa{
     utilizar o icone do renomear
 

@@ -45,13 +45,10 @@ class Tarefa{
     //método para validação dos dados
     //verifica se os inputs obrigatorios estão preenchidos
     validarDados(){
+        const camposObrigatorios = ['horarioI','nomeTarefa','horarioF','diaSem']
 
-        for(let i in this){
-            console.log(i);
-
-            if(this[i] == this.descriTarefa){
-                return true;
-            }else if(this[i] == undefined || this[i] == '' || this[i] == null){
+        for(let campos in this){
+            if(this[campos] == undefined || this[campos] == '' || this[campos] == null){
                 return false;
             }
         }
@@ -232,6 +229,9 @@ function adicionarTarefa(numDia){
     let descriTarefa = document.getElementById('descriTarefa');
     let horarioF = document.getElementById('hFim');
     let numDiaSem = numDia;
+
+    //verificar se o value da descricao é undefined para receber string vazia
+    console.log(descriTarefa);
 
     //criando nova tarefa
     let tarefa = new Tarefa(
