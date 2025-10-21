@@ -47,7 +47,7 @@ class Tarefa{
     validarDados(){
         const camposObrigatorios = ['horarioI','nomeTarefa','horarioF','diaSem']
 
-        for(let campos in this){
+        for(let campos in camposObrigatorios){
             if(this[campos] == undefined || this[campos] == '' || this[campos] == null){
                 return false;
             }
