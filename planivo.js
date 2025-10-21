@@ -231,7 +231,9 @@ function adicionarTarefa(numDia){
     let numDiaSem = numDia;
 
     //verificar se o value da descricao é undefined para receber string vazia
-    console.log(descriTarefa);
+    if(descriTarefa.value == undefined || descriTarefa.value == null || descriTarefa.value.trim() == ''){
+        descriTarefa.value = '';
+    }
 
     //criando nova tarefa
     let tarefa = new Tarefa(
