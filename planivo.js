@@ -425,7 +425,7 @@ function aviso(texto,tipo){
         if(window.location.href.includes('login.html')){
             imgAviso.src = './img/check.png';
         }else{
-        imgAviso.src = '../img/check.png';
+            imgAviso.src = '../img/check.png';
         }
         textoAviso.innerText = texto;
         containerAviso.style.backgroundColor = '#10B981';
@@ -434,7 +434,7 @@ function aviso(texto,tipo){
         if(window.location.href.includes('login.html')){
             imgAviso.src = './img/erro.png';
         }else{
-        imgAviso.src = '../img/erro.png';
+            imgAviso.src = '../img/erro.png';
         }
         textoAviso.innerText = texto;
         containerAviso.style.backgroundColor = '#EC2126';
