@@ -112,12 +112,11 @@ body{
 
 .pSair{
     color: var(--vermelho);
-    text-shadow: .5px .3px .5px black;
+    text-shadow: .2px .2px .5px black;
 }
 
 .pRenomear{
     color: var(--bluePrin);
-    text-shadow: .5px .5px .5px black;
 }
 
 .pLegenda{
