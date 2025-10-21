@@ -58,7 +58,7 @@ body{
 }
 
 /*inicio areas que aparecem com interações*/
-#areaAddTask, #areaRenomear, #areaConfirmExclu{
+#areaAddTask, #areaRenomear, #areaConfirmExclu, #areaSettings{
     background-color: #5353535c;
 
     position: absolute;
@@ -71,6 +71,10 @@ body{
     display: none;
 
     z-index: 100;
+}
+
+#areaSettings{
+    z-index: 99;
 }
 
 #tituloRenomear{
@@ -96,20 +100,36 @@ body{
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.477);
 }
 
-#headerConfirmExclu{
+#headerConfirmExclu, #headerSettings{
     width: 100%;
 }
 
-#pAddTask, #pConfirmExclu{
+#pAddTask, #pConfirmExclu, #pSettings{
     font-size: 1.4rem;
+
+    margin: 0px;
+}
+
+.pSair{
+    color: var(--vermelho);
+    text-shadow: .5px .3px .5px black;
+}
+
+.pRenomear{
+    color: var(--bluePrin);
+    text-shadow: .5px .5px .5px black;
+}
+
+.pLegenda{
+    font-size: 13px;
 }
 
 /*containeres das areas de interações*/
-#cntConteudoRnm, #cntContConfirmExclu{
+#cntConteudoRnm, #cntContConfirmExclu,#cntContSettings{
     width: 100%;
 }
 
-#cntNovaTask, #cntRenomear, #cntConfirmExclu{
+#cntNovaTask, #cntRenomear, #cntConfirmExclu, #cntSettings{
     background-color: var(--background);
 
     width: 80%;
