@@ -104,19 +104,34 @@ body{
     width: 100%;
 }
 
-#pAddTask, #pConfirmExclu, #pSettings{
+#pAddTask, #pConfirmExclu{
     font-size: 1.4rem;
 
     margin: 0px;
 }
 
-.pSair{
-    color: var(--vermelho);
-    text-shadow: .2px .2px .5px black;
+.bSair , .bRenomear{
+    color: white;
+
+    width: 100px;
+    height: 30px;
+
+    border-radius: 10px;
+    border: none;
+
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.591);
+
+    margin: 5px;
 }
 
-.pRenomear{
-    color: var(--bluePrin);
+.bRenomear{
+    background-color: var(--bluePrin);
+}
+
+.bSair{
+    background-color: var(--vermelho);
+
+    padding-top: 2px;
 }
 
 .pLegenda{
