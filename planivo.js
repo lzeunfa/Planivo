@@ -2,6 +2,10 @@
 const areaAddTask = document.getElementById("areaAddTask");
 areaAddTask.style.display = "none";
 
+//area de editar task
+const areaEdit = document.getElementById("areaEdit");
+areaEdit.style.display = "none";
+
 //area para renomear
 const areaRenomear = document.getElementById("areaRenomear");
 areaRenomear.style.display = 'none';
@@ -296,7 +300,11 @@ function renderizarTarefas(numDia, tarefas){
             <p class="txtDescriTarefa">${tarefa.descriTarefa}</p>
         </div>
 
-        <img class="iconApagar align-self-center" src="../img/apagarIcon.png" alt="apagar-Icon" width="20px" height="20px" onclick="apagarTarefa(${numDia},${index})">
+        <div class="align-self-center">
+        <img class="iconEditar mr-3" src="../img/editar.png" alt="apagar-Icon" width="20px" height="20px" onclick="editarTarefa(${numDia},${index})">
+
+        <img class="iconApagar" src="../img/apagarIcon.png" alt="apagar-Icon" width="20px" height="20px" onclick="apagarTarefa(${numDia},${index})">
+        </div>
         `;
 
         fragment.appendChild(divTask);
@@ -384,17 +392,93 @@ function confirmExclu(){
     carregarTarefas(tarefaDiaSel);
 }
 
-/*funcao que fecha cnts de interacao*/
-function fecharArea(Area){
-    if(Area == 0){
-        areaRenomear.style.display = 'none';
-    }else if(Area == 1){
-        areaAddTask.style.display = "none";
-    }else if (Area == 2){
-        areaConfirmExclu.style.display = 'none';
-    }else{
-        areaSettings.style.display = 'none';
+//funcao que abre area para edicao das tarefas
+function editarTarefa(diaSem,index){
+    //busca a tarefa clicada
+    let tarefas = bd.getTarefas(diaSem);
+    tarefas.sort((a,b) => a.horarioI.localeCompare(b.horarioI));
+    let tarefa = tarefas[index];
+    
+    //guarda o dia e o indice para usar na confirmacao
+    tarefaDiaSel = diaSem;
+    tarefaIndexSel = index;
+    
+    //preenche os inputs com os dados da tarefa clicada
+    document.querySelector('#areaEdit #hInicioEdit').value = tarefa.horarioI;
+    document.querySelector('#areaEdit #nomeTarefaEdit').value = tarefa.nomeTarefa;
+    document.querySelector('#areaEdit #descriTarefaEdit').value = tarefa.descriTarefa || '';
+    document.querySelector('#areaEdit #hFimEdit').value = tarefa.horarioF;
+    
+    //mostra a area de edicao
+    areaEdit.style.display = "flex";
+    window.scrollTo(0,0);
+    overFlowHidden();
+}
+
+//funcao para confirmar edicao da tarefa
+function confirmEdit(numDia){
+    //pega os valores do input na area de edicao
+    let horarioI = document.querySelector('#areaEdit #hInicioEdit');
+    let nomeTarefa = document.querySelector('#areaEdit #nomeTarefaEdit');
+    let descriTarefa = document.querySelector('#areaEdit #descriTarefaEdit');
+    let horarioF = document.querySelector('#areaEdit #hFimEdit');
+    
+    //verificando se a descrição tá vazia
+    if(descriTarefa.value == undefined || descriTarefa.value == null || descriTarefa.value.trim() == ''){
+        descriTarefa.value = '';
     }
+    
+    //cria nova tarefa
+    let tarefaEditada = new Tarefa(
+        horarioI.value,
+        nomeTarefa.value,
+        descriTarefa.value,
+        horarioF.value,
+        tarefaDiaSel
+    );
+    
+    //validacoes
+    if(horarioI.value > horarioF.value){
+        aviso('Horário de término deve ser no mesmo dia!','erro');
+        return;
+    }
+    
+    if(!tarefaEditada.validarDados()){
+        aviso('Erro na edição, confira os campos!','erro');
+        return;
+    }
+    
+    //busca todas tarefas do dia
+    let tarefas = bd.getTarefas(tarefaDiaSel);
+    tarefas.sort((a,b) => a.horarioI.localeCompare(b.horarioI));
+    
+    //substituicao de tarefas
+    tarefas[tarefaIndexSel] = tarefaEditada;
+    
+    //salvando no localstorage
+    bd.setTarefa(tarefaDiaSel, tarefas);
+    
+    //fecha a area de edicao
+    areaEdit.style.display = 'none';
+    overFlowVisible();
+    
+    //mostrando aviso
+    aviso('Tarefa editada com sucesso!','sucesso');
+    
+    //esvazia os inputs
+    horarioI.value = '';
+    nomeTarefa.value = '';
+    descriTarefa.value = '';
+    horarioF.value = '';
+    
+    //atualiza a view das tarefas
+    carregarTarefas(tarefaDiaSel);
+}
+
+/*funcao que fecha cnts de interacao*/
+function fecharArea(id){
+    const elemento = document.getElementById(id);
+    elemento.style.display = "none";
     overFlowVisible();
 }
 

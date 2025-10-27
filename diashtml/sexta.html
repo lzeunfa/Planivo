@@ -27,7 +27,7 @@
             <!--header do container de renomear-->
             <div id="tituloRenomear" class="d-flex flex-column mb-4">
                 <p class="p-2">Renomear:</p>
-                <img class="align-self-end mt-2 mr-2 iconFechar" src="../img/iconFechar.png" alt="fechar" width="28px" onclick="fecharArea(0)">
+                <img class="align-self-end mt-2 mr-2 iconFechar" src="../img/iconFechar.png" alt="fechar" width="28px" onclick="fecharArea('areaRenomear')">
             </div>
 
             <div id="cntConteudoRnm" class="d-flex flex-column align-items-center">
@@ -49,7 +49,7 @@
             <div id="cntNovaTask" class="p-3 d-flex flex-column">
 
                 <!--icone de fechar area-->
-                <img class="align-self-end mt-2 iconFechar" src="../img/iconFechar.png" alt="fechar" width="30px" onclick="fecharArea(1)">
+                <img class="align-self-end mt-2 iconFechar" src="../img/iconFechar.png" alt="fechar" width="30px" onclick="fecharArea('areaAddTask')">
 
                 <!--logo-->
                 <img src="../img/LogoPlanivo.png" alt="logo" width="120px">
@@ -58,16 +58,16 @@
                 <!--area formulario-->
                 <form class="d-flex flex-column">
                     <label for="hInicio">Horário de início</label>
-                    <input type="time" name="hInicio" id="hInicio" class="mb-3">
+                    <input type="time" name="hInicio" id="hInicio" class="input mb-3">
 
                     <label for="nomeTarefa">Nome da tarefa</label>
-                    <input type="text" name="nomeTarefa" id="nomeTarefa" class="mb-3">
+                    <input type="text" name="nomeTarefa" id="nomeTarefa" class="input mb-3">
 
                     <label for="descriTarefa">Descrição da Tarefa(opcional)</label>
-                    <input type="text" name="descriTarefa" id="descriTarefa" class="mb-3">
+                    <input type="text" name="descriTarefa" id="descriTarefa" class="input mb-3">
 
                     <label for="hFim">Horário de término</label>
-                    <input type="time" name="hFim" id="hFim" class="mb-3">
+                    <input type="time" name="hFim" id="hFim" class="input mb-3">
                 </form>
                 <!--area formulario-->
 
@@ -80,6 +80,44 @@
     </div>
     <!-- fim cnt que aparece para adicionar tarefa-->
 
+    <!--cnt que aparece para editar tarefa-->
+    <div id="areaEdit" class= "justify-content-center align-items-center">
+
+            <!--cnt para conteudos da div de editar task-->
+            <div id="cntEdit" class="p-3 d-flex flex-column">
+
+                <!--icone de fechar area-->
+                <img class="align-self-end mt-2 iconFechar" src="../img/iconFechar.png" alt="fechar" width="30px" onclick="fecharArea('areaEdit')">
+
+                <!--logo-->
+                <img src="../img/LogoPlanivo.png" alt="logo" width="120px">
+                <p id="pAddTask">Editar tarefa</p>
+
+                <!--area formulario-->
+                <form id="formEdit" class="d-flex flex-column">
+                    <label for="hInicio">Horário de início</label>
+                    <input type="time" name="hInicio" id="hInicioEdit" class="input mb-3">
+
+                    <label for="nomeTarefa">Nome da tarefa</label>
+                    <input type="text" name="nomeTarefa" id="nomeTarefaEdit" class="input mb-3">
+
+                    <label for="descriTarefa">Descrição da Tarefa(opcional)</label>
+                    <input type="text" name="descriTarefa" id="descriTarefaEdit" class="input mb-3">
+
+                    <label for="hFim">Horário de término</label>
+                    <input type="time" name="hFim" id="hFimEdit" class="input mb-3">
+                </form>
+                <!--area formulario-->
+
+                <!--btn para editar tarefa-->
+                <button class="p-1" id="btnNewTask" onclick="confirmEdit(5)">Confirmar</button>
+
+            </div>
+            <!--cnt para conteudos da div de editar task-->
+
+    </div>
+    <!-- fim cnt que aparece para editar tarefa-->
+
     <!--area para confirmação de exclusão de tarefa-->
     <div id="areaConfirmExclu" class= " justify-content-center align-items-center">
 
@@ -91,7 +129,7 @@
                 <img src="../img/LogoPlanivo.png" alt="logo-planivo" width="120px" class="m-2">
 
                 <!--icone de fechar area-->
-                <img class="mr-2 mt-1" src="../img/iconFechar.png" alt="fechar" width="30px" onclick="fecharArea(2)">
+                <img class="mr-2 mt-1" src="../img/iconFechar.png" alt="fechar" width="30px" onclick="fecharArea('areaConfirmExclu')">
             </div>
 
             <div id="cntContconfirmExclu" class="d-flex flex-column align-items-center">
@@ -117,7 +155,7 @@
                 <img src="../img/LogoPlanivo.png" alt="logo-planivo" width="120px" class="m-2">
 
                 <!--icone de fechar area-->
-                <img class="mr-2 mt-1" src="../img/iconFechar.png" alt="fechar" width="30px" onclick="fecharArea(3)">
+                <img class="mr-2 mt-1" src="../img/iconFechar.png" alt="fechar" width="30px" onclick="fecharArea('areaSettings')">
             </div>
 
             <div id="cntContSettings" class="d-flex flex-column align-items-center">
@@ -125,6 +163,7 @@
                 <button class="bRenomear" onclick="renomear()">renomear</button>
 
                 <button class="bSair pb-2" ondblclick="reiniciar()">(2x) reiniciar</button>
+
                 <p id="plegenda" class="pLegenda">(reiniciar irá excluir todas suas informações)</p>
 
             </div>

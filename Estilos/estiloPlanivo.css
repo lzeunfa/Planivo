@@ -58,7 +58,7 @@ body{
 }
 
 /*inicio areas que aparecem com interações*/
-#areaAddTask, #areaRenomear, #areaConfirmExclu, #areaSettings{
+#areaAddTask, #areaRenomear, #areaConfirmExclu, #areaSettings, #areaEdit{
     background-color: #5353535c;
 
     position: absolute;
@@ -143,7 +143,7 @@ body{
     width: 100%;
 }
 
-#cntNovaTask, #cntRenomear, #cntConfirmExclu, #cntSettings{
+#cntNovaTask, #cntRenomear, #cntConfirmExclu, #cntSettings, #cntEdit{
     background-color: var(--background);
 
     width: 80%;
@@ -161,7 +161,7 @@ body{
 }
 
 /*area dos inputs das infos da tarefa*/
-#nomeTarefa, #hInicio, #hFim, #descriTarefa{
+.input{
     border: none;
     border-radius: 10px;
 

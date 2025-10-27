@@ -14,6 +14,19 @@
     com isso coletar quais espaços foram alterados e realizar a atualização no localstorage
 
     botão de confirmar edição
+
+    {
+        adicionar o icone de editar na criação das tarefas no js
+        passar parametros no onclick os mesmo do apagar tarefa para function editarTarefa
+
+        abrira uma area parecida com de adicionar tarefas
+        cada area de informações recebera os valores encontrados no localstorage...
+        ... da respectiva tarefa para poder editar
+
+        terá icone de fechar
+
+        tera btn de confirmar
+    }
 }
 
 (opcao para editar a tarefa)
