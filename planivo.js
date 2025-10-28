@@ -235,6 +235,7 @@ function adicionarTarefa(numDia){
     let numDiaSem = numDia;
 
     //verificar se o value da descricao é undefined para receber string vazia
+    //troca \n por <br> para ocorrer quebra de linha caso haja conteudo
     if(descriTarefa.value == undefined || descriTarefa.value == null || descriTarefa.value.trim() == ''){
         descriTarefa.value = '';
     }else{
@@ -406,11 +407,15 @@ function editarTarefa(diaSem,index){
     //guarda o dia e o indice para usar na confirmacao
     tarefaDiaSel = diaSem;
     tarefaIndexSel = index;
+
+    //verificar se o value da descricao é undefined para receber string vazia
+    //troca \n por <br> para ocorrer quebra de linha caso haja conteudo
+    let descriFormatada = tarefa.descriTarefa ? tarefa.descriTarefa.replace(/<br\s*\/?>/gi, "\n") : '';
     
     //preenche os inputs com os dados da tarefa clicada
     document.querySelector('#areaEdit #hInicioEdit').value = tarefa.horarioI;
     document.querySelector('#areaEdit #nomeTarefaEdit').value = tarefa.nomeTarefa;
-    document.querySelector('#areaEdit #descriTarefaEdit').value = tarefa.descriTarefa || '';
+    document.querySelector('#areaEdit #descriTarefaEdit').value = descriFormatada;
     document.querySelector('#areaEdit #hFimEdit').value = tarefa.horarioF;
     
     //mostra a area de edicao
