@@ -237,6 +237,10 @@ function adicionarTarefa(numDia){
     //verificar se o value da descricao é undefined para receber string vazia
     if(descriTarefa.value == undefined || descriTarefa.value == null || descriTarefa.value.trim() == ''){
         descriTarefa.value = '';
+    }else{
+        let texto = descriTarefa.value;
+        let textoFormatado = texto.replace(/\n/g,"<br>");
+        descriTarefa.value = textoFormatado;
     }
 
     //criando nova tarefa
@@ -300,7 +304,7 @@ function renderizarTarefas(numDia, tarefas){
             <p class="txtDescriTarefa">${tarefa.descriTarefa}</p>
         </div>
 
-        <div class="align-self-center">
+        <div class="align-self-center iconsTask">
         <img class="iconEditar mr-3" src="../img/editar.png" alt="apagar-Icon" width="20px" height="20px" onclick="editarTarefa(${numDia},${index})">
 
         <img class="iconApagar" src="../img/apagarIcon.png" alt="apagar-Icon" width="20px" height="20px" onclick="apagarTarefa(${numDia},${index})">
@@ -426,6 +430,10 @@ function confirmEdit(numDia){
     //verificando se a descrição tá vazia
     if(descriTarefa.value == undefined || descriTarefa.value == null || descriTarefa.value.trim() == ''){
         descriTarefa.value = '';
+    }else{
+        let texto = descriTarefa.value;
+        let textoFormatado = texto.replace(/\n/g,"<br>");
+        descriTarefa.value = textoFormatado;
     }
     
     //cria nova tarefa

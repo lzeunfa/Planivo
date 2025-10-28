@@ -316,6 +316,12 @@ main h1{
 
     word-wrap: break-word;
     overflow-wrap: break-word;
+
+    width: 70%;
+}
+
+.iconsTask{
+    width: 60px;
 }
 
 .txtDescriTarefa{
