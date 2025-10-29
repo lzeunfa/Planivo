@@ -31,7 +31,7 @@ btnAddTarefa.style.display = 'none';
 
 /*variavel externa para passar valores entre as funções
 apagar tarefas e confirmar exclusao*/
-let tarefaDiaSel = null;
+let tarefaDiaSel = 1;
 let tarefaIndexSel = null;
 
 
@@ -103,7 +103,7 @@ function prosseguirLogin(){
         aviso('Preencha o campo nome para prosseguir!','erro');
     }else{//recebe no localstorage o nome informado no input
         localStorage.setItem('nomeUser', nomeUser);
-        window.location.href = "./diashtml/segunda.html";
+        window.location.href = "./diashtml/dia.html";
     }
 }
 
@@ -114,8 +114,44 @@ function aoCarregarLogin(){
 
     /*se no localStorage ja existir o nomeUser, ele nao deixa entrar na area de login*/
     if(nome){
-        window.location.href = './diashtml/segunda.html';
+        window.location.href = './diashtml/dia.html';
     }
+}
+
+function acessarDia(numDiaSem = 1){
+    switch(numDiaSem){
+        case 1:
+            document.body.id = "bodySeg";
+        break;
+
+        case 2:
+            document.body.id = "bodyTer";
+        break;
+
+        case 3:
+            document.body.id = "bodyQua";
+        break;
+
+        case 4:
+            document.body.id = "bodyQui";
+        break;
+
+        case 5:
+            document.body.id = "bodySex";
+        break;
+
+        case 6:
+            document.body.id = "bodySab";
+        break;
+
+        case 7:
+            document.body.id = "bodyDom";
+        break;
+
+    }
+
+    aoCarregarDias(numDiaSem);
+    tarefaDiaSel = numDiaSem;
 }
 
 //funcao para verificacao de seguranca de acesso as paginas
@@ -226,13 +262,13 @@ function novaTarefa(){
 }
 
 //parametro numDia dias da semana de 1-7, comecando na segunda
-function adicionarTarefa(numDia){
+function adicionarTarefa(){
     //recebendo os inputs da area de novatarefa
     let horarioI = document.getElementById('hInicio');
     let nomeTarefa = document.getElementById('nomeTarefa');
     let descriTarefa = document.getElementById('descriTarefa');
     let horarioF = document.getElementById('hFim');
-    let numDiaSem = numDia;
+    let numDiaSem = tarefaDiaSel;
 
     //verificar se o value da descricao é undefined para receber string vazia
     //troca \n por <br> para ocorrer quebra de linha caso haja conteudo
@@ -263,7 +299,7 @@ function adicionarTarefa(numDia){
     }
 
     //realiza a gravacao da tarefa no local storage
-    bd.gravar(tarefa,numDia);
+    bd.gravar(tarefa,tarefaDiaSel);
 
     //faz fechar a area de adicionar tarefa
     areaAddTask.style.display = 'none';
@@ -281,7 +317,7 @@ function adicionarTarefa(numDia){
     overFlowVisible();
 
     // Atualizar as tarefas sem flicker
-    carregarTarefas(numDiaSem);
+    carregarTarefas(tarefaDiaSel);
 }
 
 //função para renderizar tarefas
@@ -321,12 +357,12 @@ function renderizarTarefas(numDia, tarefas){
 }
 
 //funcao para carregar as tarefas e mostrar elas no respectivo dia
-function carregarTarefas(numDia){
-    let tarefas = bd.getTarefas(numDia);
+function carregarTarefas(){
+    let tarefas = bd.getTarefas(tarefaDiaSel);
 
     if(tarefas.length > 0){
         //renderiza as tarefas
-        renderizarTarefas(numDia, tarefas);
+        renderizarTarefas(tarefaDiaSel, tarefas);
 
         //atualiza a visibilidade dos containers
         contSemTask.style.display = 'none';
@@ -400,7 +436,7 @@ function confirmExclu(){
 //funcao que abre area para edicao das tarefas
 function editarTarefa(diaSem,index){
     //busca a tarefa clicada
-    let tarefas = bd.getTarefas(diaSem);
+    let tarefas = bd.getTarefas(tarefaDiaSel);
     tarefas.sort((a,b) => a.horarioI.localeCompare(b.horarioI));
     let tarefa = tarefas[index];
     
@@ -425,7 +461,7 @@ function editarTarefa(diaSem,index){
 }
 
 //funcao para confirmar edicao da tarefa
-function confirmEdit(numDia){
+function confirmEdit(){
     //pega os valores do input na area de edicao
     let horarioI = document.querySelector('#areaEdit #hInicioEdit');
     let nomeTarefa = document.querySelector('#areaEdit #nomeTarefaEdit');

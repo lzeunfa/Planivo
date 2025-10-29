@@ -236,15 +236,19 @@ nav ul li a{
     color: var(--navDias);
 }
 
-#bodySeg #segunda a,
-#bodyTer #terca a,
-#bodyQua #quarta a,
-#bodyQui #quinta a,
-#bodySex #sexta a,
-#bodySab #sabado a,
-#bodyDom #domingo a{
+#bodySeg #segunda,
+#bodyTer #terca,
+#bodyQua #quarta,
+#bodyQui #quinta,
+#bodySex #sexta,
+#bodySab #sabado,
+#bodyDom #domingo{
     color: var(--bluePrin);
     text-decoration: underline;
+}
+
+li{
+    cursor: pointer;
 }
 
 /*fim area de navegacao dias*/

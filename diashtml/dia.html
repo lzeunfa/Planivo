@@ -14,7 +14,7 @@
     <!--CSS-->
     <link rel="stylesheet" href="../Estilos/estiloPlanivo.css">
 </head>
-<body id="bodyQua" onload="aoCarregarDias(3)">
+<body id="bodySeg" onload="aoCarregarDias(1)">
 
     <!--areas que aparecem com interacoes-->
 
@@ -72,7 +72,7 @@
                 <!--area formulario-->
 
                 <!--btn para adicionar tarefa-->
-                <button class="p-1" id="btnNewTask" onclick="adicionarTarefa(3)">Adicionar tarefa</button>
+                <button class="p-1" id="btnNewTask" onclick="adicionarTarefa(1)">Adicionar tarefa</button>
 
             </div>
             <!--cnt para conteudos da div de adicionar task-->
@@ -102,6 +102,7 @@
                     <input type="text" name="nomeTarefa" id="nomeTarefaEdit" class="input mb-3">
 
                     <label for="descriTarefa">Descrição da Tarefa(opcional)</label>
+                    
                     <textarea class="input" name="descriTarefa" id="descriTarefaEdit"></textarea>
 
                     <label for="hFim">Horário de término</label>
@@ -110,7 +111,7 @@
                 <!--area formulario-->
 
                 <!--btn para editar tarefa-->
-                <button class="p-1" id="btnNewTask" onclick="confirmEdit(3)">Confirmar</button>
+                <button class="p-1" id="btnNewTask" onclick="confirmEdit(1)">Confirmar</button>
 
             </div>
             <!--cnt para conteudos da div de editar task-->
@@ -202,13 +203,13 @@
         <!--ul para navegar nos dias da semana-->
         <ul class="d-flex justify-content-around w-100 m-0">
 
-            <li id="domingo"><a href="domingo.html">DOM</a></li>
-            <li id="segunda"><a href="segunda.html">SEG</a></li>
-            <li id="terca"><a href="terca.html">TER</a></li>
-            <li id="quarta"><a href="quarta.html">QUA</a></li>
-            <li id="quinta"><a href="quinta.html">QUI</a></li>
-            <li id="sexta"><a href="sexta.html">SEX</a></li>
-            <li id="sabado"><a href="sabado.html">SAB</a></li>
+            <li id="domingo" onclick="acessarDia(7)">DOM</li>
+            <li id="segunda" onclick="acessarDia(1)">SEG</li>
+            <li id="terca" onclick="acessarDia(2)">TER</li>
+            <li id="quarta" onclick="acessarDia(3)">QUA</li>
+            <li id="quinta" onclick="acessarDia(4)">QUI</li>
+            <li id="sexta" onclick="acessarDia(5)">SEX</li>
+            <li id="sabado" onclick="acessarDia(6)">SAB</li>
 
         </ul>
 
