@@ -52,23 +52,31 @@ para adicionar a tarefa e suas infos ao dia.
 * Tela principal com tarefa adicionada: <br>
 -Mesma estrutura da tela principal vazia porém com<br>
 container destinado as tarefas adicionadas com<br>
-horario inicial final e nome da tarefa acompanhado<br>
-com icone de lixeira para deletar a tarefa.
+horario inicial final<br>
+descrição da tarefa <br>
+e nome da tarefa acompanhado<br>
+com icone de lixeira para deletar a tarefa e <br>
+icone de editar tarefa <br>.
 -Abaixo doconteiner de tarefa existirá um btn redondo verde<br>
 com mesma funcionaldiade do btn da tela vazia<br>
 para adicionar uma nova tarefa ao dia.
 
-* Area para renomear:
+* Area para settings:<br>
+-Nesta área o usuário terá acesso a opção de reiniciar<br>
+e a opção de renomear.<br>
+-icone de x para fechar a area.
+
+* Area para renomear:<br>
 -Container com fundo opaco e dentro dele <br>
 container com fundo branco para a area dos<br>
 inputs para receber novo nome e btn de confirmação.
-- icone de x para fechar a area.
+-icone de x para fechar a area.
 
-* Area para confirmação de exclusão de tarefa:
-- -Container com fundo opaco e dentro dele <br>
+* Area para confirmação de exclusão de tarefa:<br>
+-Container com fundo opaco e dentro dele <br>
 container com fundo com texto de confirmar exclusão<br>
 e com btn de confirmar na cor vermelha.
-- icone de x para fechar a area.
+-icone de x para fechar a area.
 
 
 
@@ -85,4 +93,4 @@ e com btn de confirmar na cor vermelha.
 - Classes e Ids de fácil interpretação;<br>
 - Código limpo;<br>
 - Utilizar recursos ES6 OO;<br>
-[acessar](https://lzeunfa.github.io/Planivo/login.html)
+[acessar o Planivo](https://lzeunfa.github.io/Planivo/login.html)
