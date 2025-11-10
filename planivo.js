@@ -118,40 +118,11 @@ function aoCarregarLogin(){
     }
 }
 
-function acessarDia(numDiaSem = 1){
-    switch(numDiaSem){
-        case 1:
-            document.body.id = "bodySeg";
-        break;
+function acessarDia(numDiaSem = 'bodySeg',diaSem){
+    document.body.id = numDiaSem;
 
-        case 2:
-            document.body.id = "bodyTer";
-        break;
-
-        case 3:
-            document.body.id = "bodyQua";
-        break;
-
-        case 4:
-            document.body.id = "bodyQui";
-        break;
-
-        case 5:
-            document.body.id = "bodySex";
-        break;
-
-        case 6:
-            document.body.id = "bodySab";
-        break;
-
-        case 7:
-            document.body.id = "bodyDom";
-        break;
-
-    }
-
-    aoCarregarDias(numDiaSem);
-    tarefaDiaSel = numDiaSem;
+    aoCarregarDias(diaSem);
+    tarefaDiaSel = diaSem;
 }
 
 //funcao para verificacao de seguranca de acesso as paginas
