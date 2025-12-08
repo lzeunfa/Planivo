@@ -4,7 +4,7 @@
 * Desenvolvedor: Eliseu Nóbrega.<br>
 * Propósito:<br>
 Propor ao usuário uma aplicação web simples e funcional para <br> organizar sua semana com tarefas de um único dia da semana <br> a fim de que alcance seus objetivos.<br>
-* Status: Em andamento.
+* Status: Finalizado.
 
 ***
 
@@ -85,6 +85,13 @@ e com btn de confirmar na cor vermelha.
 
 
 [acessar design figma](https://www.figma.com/proto/9mYFph96xaUJJVgOgpNrhj/Planivo?node-id=0-1&t=9jDWumtSyUeq8vdA-1)
+
+<img width="262" height="648" alt="image" src="https://github.com/user-attachments/assets/20da2d9d-e0fb-4bc2-8862-3e1edfcd0b9a" />
+
+
+<img width="265" height="645" alt="image" src="https://github.com/user-attachments/assets/a1e9aab2-4604-4988-a83d-00b7d5284b12" />
+
+
 
 ***
 
